@@ -13,11 +13,16 @@ async function run(): Promise<void> {
     // providerApiToken: process.env.PROVIDER_LOCAL_EXECUTION_API_TOKEN
   };
 
+  const invocationArgs = {
+    // providerPrivateKey: process.env.PROVIDER_LOCAL_EXECUTION_PRIVATE_KEY
+  };
+
   logger.info(
     await executeSingleHandlerLocal(
       integrationConfig,
       logger,
       executionHandler,
+      invocationArgs,
       createLocalInvocationEvent(),
     ),
     "Execution completed successfully!",
