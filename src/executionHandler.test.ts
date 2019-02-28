@@ -18,8 +18,11 @@ test("executionHandler", async () => {
       processRelationships: jest.fn().mockReturnValue([]),
       publishPersisterOperations: jest.fn().mockResolvedValue({}),
     },
-    onelogin: {
-      fetchAccountDetails: jest.fn().mockReturnValue({}),
+    provider: {
+      authenticate: jest.fn().mockReturnValue({}),
+      fetchUsers: jest.fn().mockReturnValue([]),
+      fetchGroups: jest.fn().mockReturnValue([]),
+      fetchRoles: jest.fn().mockReturnValue([]),
     },
   };
 
@@ -31,10 +34,10 @@ test("executionHandler", async () => {
   await executionHandler(invocationContext);
 
   expect(initializeContext).toHaveBeenCalledWith(invocationContext);
-  expect(executionContext.onelogin.fetchAccountDetails).toHaveBeenCalledTimes(
-    1,
-  );
-  expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(1);
+  expect(executionContext.provider.fetchUsers).toHaveBeenCalledTimes(1);
+  expect(executionContext.provider.fetchGroups).toHaveBeenCalledTimes(1);
+  expect(executionContext.provider.fetchGroups).toHaveBeenCalledTimes(1);
+  expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(3);
   expect(
     executionContext.persister.publishPersisterOperations,
   ).toHaveBeenCalledTimes(1);

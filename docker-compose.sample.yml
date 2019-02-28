@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  integration:
+    image: jupiter-integration-onelogin-app
+    build: .
+    container_name: jupiter-integration-onelogin-app
+    volumes:
+      - .:/app:cached
+      - ~/.ssh:/root/.ssh
+      - ~/.bash_history:/root/.bash_history
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      GRAPH_DB_ENDPOINT: graph
+      ONELOGIN_CLIENT_ID: 'YOUR ONELOGIN CLIENT ID HERE'
+      ONELOGIN_CLIENT_SECRET: 'YOUR ONELOGIN CLIENT SECRET HERE'
+    depends_on:
+      - graph
+  graph:
+    image: tinkerpop/gremlin-server:3.3
+    restart: unless-stopped
+    ports:
+      - "8182:8182"

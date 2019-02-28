@@ -19,7 +19,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "bunyan": "^1.8.12"
+    "@types/node-fetch": "^2.1.6",
+    "bunyan": "^1.8.12",
+    "node-fetch": "^2.3.0"
   },
   "peerDependencies": {
     "@jupiterone/jupiter-managed-integration-sdk": "^19.1.0"

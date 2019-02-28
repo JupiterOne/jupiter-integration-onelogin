@@ -1,17 +1,23 @@
-import OneLoginClient from "./OneLoginClient";
-import { OneLoginExecutionContext } from "./types";
-
 import {
   IntegrationExecutionContext,
   IntegrationInvocationEvent,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 
-export default function initializeContext(
+import { OneLoginClient } from "./onelogin";
+
+export default async function initializeContext(
   context: IntegrationExecutionContext<IntegrationInvocationEvent>,
-): OneLoginExecutionContext {
+) {
+  const { config } = context.instance;
+
+  const provider = new OneLoginClient(config.clientId, config.clientSecret);
+  await provider.authenticate();
+
+  const { persister, graph } = context.clients.getClients();
+
   return {
-    ...context,
-    ...context.clients.getClients(),
-    onelogin: new OneLoginClient(),
+    graph,
+    persister,
+    provider,
   };
 }

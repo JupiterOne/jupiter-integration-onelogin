@@ -1,0 +1,26 @@
+{
+  "status": {
+    "error": false,
+    "code": 200,
+    "type": "success",
+    "message": "Success"
+  },
+  "pagination": {
+    "before_cursor": null,
+    "after_cursor": null,
+    "previous_link": null,
+    "next_link": null
+  },
+  "data": [
+    {
+      "id": 445014,
+      "name": "First Group",
+      "reference": null
+    },
+    {
+      "id": 445039,
+      "name": "Second Group",
+      "reference": null
+    }
+  ]
+}
