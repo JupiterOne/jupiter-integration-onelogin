@@ -6,8 +6,8 @@ import {
   UserRoleRelationship,
 } from "../jupiterone";
 
-import { generateRoleId } from "./RoleEntityConverter";
-import { generateUserId } from "./UserEntityConverter";
+import { generateRoleKey } from "./RoleEntityConverter";
+import { generateUserKey } from "./UserEntityConverter";
 
 interface RolesDict {
   [id: number]: Role;
@@ -28,15 +28,15 @@ export function createUserRoleRelationships(users: User[], roles: Role[]) {
 
     const relationships = user.role_id.reduce(
       (userRolesAcc, roleId: number) => {
-        const parentId = generateUserId(user.id);
-        const childId = generateRoleId(roleId);
+        const parentKey = generateUserKey(user.id);
+        const childKey = generateRoleKey(roleId);
 
         const relationship: UserRoleRelationship = {
           _class: USER_ROLE_RELATIONSHIP_CLASS,
-          _fromEntityKey: parentId,
-          _key: `${parentId}_has_${childId}`,
+          _fromEntityKey: parentKey,
+          _key: `${parentKey}_has_${childKey}`,
           _type: USER_ROLE_RELATIONSHIP_TYPE,
-          _toEntityKey: childId,
+          _toEntityKey: childKey,
         };
 
         return [...userRolesAcc, relationship];

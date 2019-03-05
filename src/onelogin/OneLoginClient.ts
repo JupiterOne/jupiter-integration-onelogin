@@ -1,6 +1,6 @@
 import fetch, { RequestInit } from "node-fetch";
 
-interface OneloginResponce {
+interface OneloginResponse {
   status: {
     error: boolean;
     code: number;
@@ -23,6 +23,11 @@ interface AccessToken {
   refresh_token: string;
   token_type: string;
   account_id: number;
+}
+
+export interface Account {
+  id: string;
+  name: string;
 }
 
 export interface User {
@@ -49,8 +54,8 @@ export interface User {
   distinguished_name: string;
   external_id: number;
   directory_id: number;
-  member_of: null;
-  samaccountname: null;
+  member_of: string | null;
+  samaccountname: string | null;
   userprincipalname: null;
   manager_ad_id: null;
   manager_user_id: null;
@@ -73,19 +78,19 @@ export interface Role {
   name: string;
 }
 
-interface AccessTokenResponse extends OneloginResponce {
+interface AccessTokenResponse extends OneloginResponse {
   data: AccessToken[];
 }
 
-interface UserResponse extends OneloginResponce {
+interface UserResponse extends OneloginResponse {
   data: User[];
 }
 
-interface GroupResponse extends OneloginResponce {
+interface GroupResponse extends OneloginResponse {
   data: Group[];
 }
 
-interface RoleResponse extends OneloginResponce {
+interface RoleResponse extends OneloginResponse {
   data: Role[];
 }
 
@@ -93,6 +98,7 @@ export interface OneLoginDataModel {
   groups: Group[];
   users: User[];
   roles: Role[];
+  accountName?: string;
 }
 
 enum Method {

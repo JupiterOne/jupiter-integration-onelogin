@@ -16,6 +16,7 @@ services:
       GRAPH_DB_ENDPOINT: graph
       ONELOGIN_CLIENT_ID: 'YOUR ONELOGIN CLIENT ID HERE'
       ONELOGIN_CLIENT_SECRET: 'YOUR ONELOGIN CLIENT SECRET HERE'
+      ONELOGIN_ACCOUNT_NAME: ''
     depends_on:
       - graph
   graph:

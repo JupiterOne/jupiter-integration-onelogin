@@ -12,6 +12,7 @@ async function run(): Promise<void> {
   const integrationConfig = {
     clientId: process.env.ONELOGIN_CLIENT_ID,
     clientSecret: process.env.ONELOGIN_CLIENT_SECRET,
+    accountName: process.env.ONELOGIN_ACCOUNT_NAME,
   };
 
   const invocationArgs = {

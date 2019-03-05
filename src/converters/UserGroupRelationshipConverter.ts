@@ -6,8 +6,8 @@ import {
   UserGroupRelationship,
 } from "../jupiterone";
 
-import { generateGroupId } from "./GroupEntityConverter";
-import { generateUserId } from "./UserEntityConverter";
+import { generateGroupKey } from "./GroupEntityConverter";
+import { generateUserKey } from "./UserEntityConverter";
 
 export function createUserGroupRelationships(users: User[]) {
   const defaultValue: UserGroupRelationship[] = [];
@@ -17,15 +17,15 @@ export function createUserGroupRelationships(users: User[]) {
       return acc;
     }
 
-    const parentId = generateGroupId(user.group_id);
-    const childId = generateUserId(user.id);
+    const parentKey = generateGroupKey(user.group_id);
+    const childKey = generateUserKey(user.id);
 
     const relationship: UserGroupRelationship = {
       _class: USER_GROUP_RELATIONSHIP_CLASS,
-      _fromEntityKey: parentId,
-      _key: `${parentId}_has_${childId}`,
+      _fromEntityKey: parentKey,
+      _key: `${parentKey}_has_${childKey}`,
       _type: USER_GROUP_RELATIONSHIP_TYPE,
-      _toEntityKey: childId,
+      _toEntityKey: childKey,
     };
 
     return [...acc, relationship];

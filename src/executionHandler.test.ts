@@ -24,20 +24,28 @@ test("executionHandler", async () => {
       fetchGroups: jest.fn().mockReturnValue([]),
       fetchRoles: jest.fn().mockReturnValue([]),
     },
+    account: {
+      id: "",
+      name: "",
+    },
   };
 
   (initializeContext as jest.Mock).mockReturnValue(executionContext);
 
-  const invocationContext = {} as IntegrationExecutionContext<
-    IntegrationInvocationEvent
-  >;
+  const invocationContext = {
+    instance: {
+      config: {},
+      id: "id",
+      name: "name",
+    },
+  } as IntegrationExecutionContext<IntegrationInvocationEvent>;
   await executionHandler(invocationContext);
 
   expect(initializeContext).toHaveBeenCalledWith(invocationContext);
   expect(executionContext.provider.fetchUsers).toHaveBeenCalledTimes(1);
   expect(executionContext.provider.fetchGroups).toHaveBeenCalledTimes(1);
   expect(executionContext.provider.fetchGroups).toHaveBeenCalledTimes(1);
-  expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(3);
+  expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(4);
   expect(
     executionContext.persister.publishPersisterOperations,
   ).toHaveBeenCalledTimes(1);
