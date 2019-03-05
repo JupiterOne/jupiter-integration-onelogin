@@ -1,39 +1,25 @@
-import initializeContext from "./initializeContext";
-import OneLoginClient from "./OneLoginClient";
-
 import {
   IntegrationExecutionContext,
   IntegrationExecutionResult,
   IntegrationInvocationEvent,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 
-import {
-  createAccountEntity,
-  // createAccountRelationships,
-} from "./converters";
-
-import { ACCOUNT_ENTITY_TYPE, AccountEntity } from "./types";
+import initializeContext from "./initializeContext";
+import fetchEntitiesAndRelationships from "./jupiterone/fetchEntitiesAndRelationships";
+import fetchOneLoginData from "./onelogin/fetchOneLoginData";
+import publishChanges from "./persister/publishChanges";
 
 export default async function executionHandler(
   context: IntegrationExecutionContext<IntegrationInvocationEvent>,
 ): Promise<IntegrationExecutionResult> {
-  const { graph, persister, onelogin } = initializeContext(context);
+  const { graph, persister, provider, account } = await initializeContext(
+    context,
+  );
 
-  const [oldAccountEntities, newAccountEntities] = await Promise.all([
-    graph.findEntitiesByType<AccountEntity>(ACCOUNT_ENTITY_TYPE),
-    fetchAccountEntitiesFromProvider(onelogin),
-  ]);
+  const oldData = await fetchEntitiesAndRelationships(graph);
+  const oneLoginData = await fetchOneLoginData(provider);
 
   return {
-    operations: await persister.publishPersisterOperations([
-      persister.processEntities(oldAccountEntities, newAccountEntities),
-      [],
-    ]),
+    operations: await publishChanges(persister, oldData, oneLoginData, account),
   };
-}
-
-async function fetchAccountEntitiesFromProvider(
-  onelogin: OneLoginClient,
-): Promise<AccountEntity[]> {
-  return [createAccountEntity(await onelogin.fetchAccountDetails())];
 }

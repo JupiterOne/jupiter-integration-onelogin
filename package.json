@@ -19,7 +19,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "bunyan": "^1.8.12"
+    "bunyan": "^1.8.12",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.3.0"
   },
   "peerDependencies": {
     "@jupiterone/jupiter-managed-integration-sdk": "^19.1.0"
@@ -32,14 +34,16 @@
     "@jupiterone/jupiter-managed-integration-sdk": "^19.1.0",
     "@types/bunyan": "^1.8.5",
     "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.122",
     "@types/node": "^10.12.20",
+    "@types/node-fetch": "^2.1.6",
     "husky": "^1.3.1",
     "jest": "^24.0.0",
     "lint-staged": "^8.1.3",
     "prettier": "1.16.4",
     "ts-jest": "^24.0.0",
-    "tslint": "^5.12.1",
     "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.1"
   },
