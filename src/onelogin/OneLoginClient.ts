@@ -31,46 +31,46 @@ export interface Account {
 }
 
 export interface User {
-  activated_at: string;
+  activated_at: string | null;
   created_at: string;
   email: string;
-  username: string;
+  username: string | null;
   firstname: string;
   group_id: number;
   id: number;
-  invalid_login_attempts: number;
-  invitation_sent_at: string;
-  last_login: string;
+  invalid_login_attempts: number | null;
+  invitation_sent_at: string | null;
+  last_login: string | null;
   lastname: string;
-  locked_until: string;
-  comment: string;
+  locked_until: string | null;
+  comment: string | null;
   openid_name: string;
-  locale_code: string;
-  preferred_locale_code: string;
-  password_changed_at: string;
-  phone: string;
+  locale_code: string | null;
+  preferred_locale_code: string | null;
+  password_changed_at: string | null;
+  phone: string | null;
   status: number;
   updated_at: string;
-  distinguished_name: string;
-  external_id: number;
-  directory_id: number;
+  distinguished_name: string | null;
+  external_id: number | null;
+  directory_id: number | null;
   member_of: string | null;
   samaccountname: string | null;
-  userprincipalname: null;
-  manager_ad_id: null;
-  manager_user_id: null;
+  userprincipalname: string | null;
+  manager_ad_id: number | null;
+  manager_user_id: number | null;
   role_id: number[];
-  company: string;
-  department: string;
-  title: string;
+  company: string | null;
+  department: string | null;
+  title: string | null;
   state: number;
-  trusted_idp_id: number;
+  trusted_idp_id: number | null;
 }
 
 export interface Group {
   id: number;
   name: string;
-  reference?: string;
+  reference: string | null;
 }
 
 export interface Role {

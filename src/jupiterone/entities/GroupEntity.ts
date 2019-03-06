@@ -6,5 +6,5 @@ export const GROUP_ENTITY_CLASS = "UserGroup";
 export interface GroupEntity extends EntityFromIntegration {
   id: number;
   name: string;
-  reference?: string;
+  reference: string | null;
 }
