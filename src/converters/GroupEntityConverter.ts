@@ -17,7 +17,7 @@ export function createGroupEntities(data: Group[]): GroupEntity[] {
       _type: GROUP_ENTITY_TYPE,
       id: group.id,
       displayName: group.name,
-      reference: group.reference || "",
+      reference: group.reference,
       name: group.name,
     };
   });
