@@ -1,6 +1,6 @@
 {
-  "name": "jupiter-integration-onelogin",
-  "version": "0.0.0",
+  "name": "@jupiterone/jupiter-integration-onelogin",
+  "version": "0.1.0",
   "description": "A JupiterOne managed integration for https://www.onelogin.com",
   "main": "index.js",
   "repository": "https://github.com/jupiterone-io/jupiter-integration-onelogin",
