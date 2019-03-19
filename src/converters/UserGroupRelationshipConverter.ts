@@ -1,13 +1,14 @@
 import { User } from "../onelogin/OneLoginClient";
 
 import {
+  GROUP_ENTITY_TYPE,
+  USER_ENTITY_TYPE,
   USER_GROUP_RELATIONSHIP_CLASS,
   USER_GROUP_RELATIONSHIP_TYPE,
   UserGroupRelationship,
 } from "../jupiterone";
 
-import { generateGroupKey } from "./GroupEntityConverter";
-import { generateUserKey } from "./UserEntityConverter";
+import generateKey from "../utils/generateKey";
 
 export function createUserGroupRelationships(users: User[]) {
   const defaultValue: UserGroupRelationship[] = [];
@@ -17,13 +18,13 @@ export function createUserGroupRelationships(users: User[]) {
       return acc;
     }
 
-    const parentKey = generateGroupKey(user.group_id);
-    const childKey = generateUserKey(user.id);
+    const parentKey = generateKey(GROUP_ENTITY_TYPE, user.group_id);
+    const childKey = generateKey(USER_ENTITY_TYPE, user.id);
 
     const relationship: UserGroupRelationship = {
       _class: USER_GROUP_RELATIONSHIP_CLASS,
       _fromEntityKey: parentKey,
-      _key: `${parentKey}_has_${childKey}`,
+      _key: `${parentKey}_assigned_${childKey}`,
       _type: USER_GROUP_RELATIONSHIP_TYPE,
       _toEntityKey: childKey,
     };

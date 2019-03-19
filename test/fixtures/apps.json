@@ -1,0 +1,34 @@
+{
+  "status": {
+    "error": false,
+    "code": 200,
+    "type": "success",
+    "message": "Success"
+  },
+  "pagination": {
+    "before_cursor": null,
+    "after_cursor": null,
+    "previous_link": null,
+    "next_link": null
+  },
+  "data": [
+    {
+      "id": 32491897,
+      "connector_id": 176,
+      "name": "Dropbox",
+      "extension": true,
+      "icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/dropbox.png",
+      "visible": true,
+      "provisioning": true
+    },
+    {
+      "id": 12380689,
+      "connector_id": 7164,
+      "name": "Office 365",
+      "extension": true,
+      "icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/office_365.png",
+      "visible": true,
+      "provisioning": false
+    }
+  ]
+}

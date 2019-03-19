@@ -1,15 +1,14 @@
-export * from "./entities/GroupEntity";
-export * from "./entities/UserEntity";
-export * from "./entities/RoleEntity";
-export * from "./entities/AccountEntity";
-export * from "./entities/UserGroupRelationship";
-export * from "./entities/UserRoleRelationship";
-export * from "./entities/AccountUserRelationship";
-export * from "./entities/AccountGroupRelationship";
-export * from "./entities/AccountRoleRelationship";
+export * from "./entities";
 
 import fetchEntitiesAndRelationships, {
   JupiterOneDataModel,
+  JupiterOneEntitiesData,
+  JupiterOneRelationshipsData,
 } from "./fetchEntitiesAndRelationships";
 
-export { fetchEntitiesAndRelationships, JupiterOneDataModel };
+export {
+  fetchEntitiesAndRelationships,
+  JupiterOneDataModel,
+  JupiterOneEntitiesData,
+  JupiterOneRelationshipsData,
+};

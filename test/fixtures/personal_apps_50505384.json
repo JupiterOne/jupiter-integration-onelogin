@@ -1,0 +1,28 @@
+{
+  "status": {
+    "error": false,
+    "code": 200,
+    "type": "success",
+    "message": "Success"
+  },
+  "data": [
+    {
+      "id": 2222222,
+      "name": "AWS DynamoDB Multi Role Production 2",
+      "icon": "https://image.com/mobile_50.png?1421095823",
+      "provisioned": "unknown",
+      "extension": false,
+      "login_id": 66666666,
+      "personal": true
+    },
+    {
+      "id": 12380689,
+      "name": "Office 365",
+      "icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/office_365.png",
+      "provisioned": "unknown",
+      "extension": false,
+      "login_id": 1231231,
+      "personal": false
+    }
+  ]
+}

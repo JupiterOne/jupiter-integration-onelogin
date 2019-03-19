@@ -1,13 +1,14 @@
 import { Account, Role } from "../onelogin/OneLoginClient";
 
 import {
+  ACCOUNT_ENTITY_TYPE,
   ACCOUNT_ROLE_RELATIONSHIP_CLASS,
   ACCOUNT_ROLE_RELATIONSHIP_TYPE,
   AccountRoleRelationship,
+  ROLE_ENTITY_TYPE,
 } from "../jupiterone";
 
-import { generateAccountKey } from "./AccountEntityConverter";
-import { generateRoleKey } from "./RoleEntityConverter";
+import generateKey from "../utils/generateKey";
 
 export function createAccountRoleRelationships(
   roles: Role[],
@@ -16,8 +17,8 @@ export function createAccountRoleRelationships(
   const defaultValue: AccountRoleRelationship[] = [];
 
   return roles.reduce((acc, role) => {
-    const parentKey = generateAccountKey(account.id);
-    const childKey = generateRoleKey(role.id);
+    const parentKey = generateKey(ACCOUNT_ENTITY_TYPE, account.id);
+    const childKey = generateKey(ROLE_ENTITY_TYPE, role.id);
 
     const relationship: AccountRoleRelationship = {
       _class: ACCOUNT_ROLE_RELATIONSHIP_CLASS,

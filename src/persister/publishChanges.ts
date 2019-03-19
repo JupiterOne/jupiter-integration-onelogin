@@ -1,25 +1,37 @@
-import { PersisterClient } from "@jupiterone/jupiter-managed-integration-sdk";
 import {
+  EntityFromIntegration,
+  EntityOperation,
+  PersisterClient,
+  RelationshipOperation,
+} from "@jupiterone/jupiter-managed-integration-sdk";
+
+import {
+  createAccountAppRelationships,
   createAccountEntity,
   createAccountGroupRelationships,
   createAccountRoleRelationships,
   createAccountUserRelationships,
+  createAppEntities,
   createGroupEntities,
+  createPersonalAppEntities,
   createRoleEntities,
+  createUserAppRelationships,
   createUserEntities,
   createUserGroupRelationships,
+  createUserPersonalAppRelationships,
   createUserRoleRelationships,
 } from "../converters";
 
 import {
-  AccountEntity,
-  GroupEntity,
   JupiterOneDataModel,
-  RoleEntity,
-  UserEntity,
+  JupiterOneEntitiesData,
+  JupiterOneRelationshipsData,
 } from "../jupiterone";
 
 import { Account, OneLoginDataModel } from "../onelogin/OneLoginClient";
+
+type EntitiesKeys = keyof JupiterOneEntitiesData;
+type RelationshipsKeys = keyof JupiterOneRelationshipsData;
 
 export default async function publishChanges(
   persister: PersisterClient,
@@ -29,40 +41,61 @@ export default async function publishChanges(
 ) {
   const newData = convert(oneLoginData, account);
 
-  const entities = [
-    ...persister.processEntities<AccountEntity>(
-      oldData.accounts,
-      newData.accounts,
-    ),
-    ...persister.processEntities<UserEntity>(oldData.users, newData.users),
-    ...persister.processEntities<GroupEntity>(oldData.groups, newData.groups),
-    ...persister.processEntities<RoleEntity>(oldData.roles, newData.roles),
-  ];
-
-  const relationships = [
-    ...persister.processRelationships(
-      oldData.accountUserRelationships,
-      newData.accountUserRelationships,
-    ),
-    ...persister.processRelationships(
-      oldData.accountGroupRelationships,
-      newData.accountGroupRelationships,
-    ),
-    ...persister.processRelationships(
-      oldData.accountRoleRelationships,
-      newData.accountRoleRelationships,
-    ),
-    ...persister.processRelationships(
-      oldData.userGroupRelationships,
-      newData.userGroupRelationships,
-    ),
-    ...persister.processRelationships(
-      oldData.userRoleRelationships,
-      newData.userRoleRelationships,
-    ),
-  ];
+  const entities = createEntitiesOperations(
+    oldData.entities,
+    newData.entities,
+    persister,
+  );
+  const relationships = createRelationshipsOperations(
+    oldData.relationships,
+    newData.relationships,
+    persister,
+  );
 
   return await persister.publishPersisterOperations([entities, relationships]);
+}
+
+function createEntitiesOperations(
+  oldData: JupiterOneEntitiesData,
+  newData: JupiterOneEntitiesData,
+  persister: PersisterClient,
+): EntityOperation[] {
+  const defatultOperations: EntityOperation[] = [];
+  const entities: EntitiesKeys[] = Object.keys(oldData) as EntitiesKeys[];
+
+  return entities.reduce((operations, entityName) => {
+    const oldEntities = oldData[entityName];
+    const newEntities = newData[entityName];
+
+    return [
+      ...operations,
+      ...persister.processEntities<EntityFromIntegration>(
+        oldEntities,
+        newEntities,
+      ),
+    ];
+  }, defatultOperations);
+}
+
+function createRelationshipsOperations(
+  oldData: JupiterOneRelationshipsData,
+  newData: JupiterOneRelationshipsData,
+  persister: PersisterClient,
+): RelationshipOperation[] {
+  const defatultOperations: RelationshipOperation[] = [];
+  const relationships: RelationshipsKeys[] = Object.keys(
+    oldData,
+  ) as RelationshipsKeys[];
+
+  return relationships.reduce((operations, relationshipName) => {
+    const oldRelationhips = oldData[relationshipName];
+    const newRelationhips = newData[relationshipName];
+
+    return [
+      ...operations,
+      ...persister.processRelationships(oldRelationhips, newRelationhips),
+    ];
+  }, defatultOperations);
 }
 
 export function convert(
@@ -70,16 +103,46 @@ export function convert(
   account: Account,
 ): JupiterOneDataModel {
   return {
+    entities: convertEntities(oneLoginDataModel, account),
+    relationships: convertRelationships(oneLoginDataModel, account),
+  };
+}
+
+export function convertEntities(
+  oneLoginDataModel: OneLoginDataModel,
+  account: Account,
+): JupiterOneEntitiesData {
+  return {
     accounts: [createAccountEntity(account)],
+    apps: createAppEntities(oneLoginDataModel.apps),
     groups: createGroupEntities(oneLoginDataModel.groups),
     users: createUserEntities(oneLoginDataModel.users),
+    personalApps: createPersonalAppEntities(oneLoginDataModel.personalApps),
     roles: createRoleEntities(oneLoginDataModel.roles),
+  };
+}
+
+export function convertRelationships(
+  oneLoginDataModel: OneLoginDataModel,
+  account: Account,
+): JupiterOneRelationshipsData {
+  return {
     userGroupRelationships: createUserGroupRelationships(
       oneLoginDataModel.users,
     ),
     userRoleRelationships: createUserRoleRelationships(
       oneLoginDataModel.users,
       oneLoginDataModel.roles,
+    ),
+    userAppRelationships: createUserAppRelationships(
+      oneLoginDataModel.personalApps,
+    ),
+    userPersonalAppRelationships: createUserPersonalAppRelationships(
+      oneLoginDataModel.personalApps,
+    ),
+    accountAppRelationships: createAccountAppRelationships(
+      oneLoginDataModel.apps,
+      account,
     ),
     accountUserRelationships: createAccountUserRelationships(
       oneLoginDataModel.users,
