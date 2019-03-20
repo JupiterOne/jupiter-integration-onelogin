@@ -78,6 +78,26 @@ export interface Role {
   name: string;
 }
 
+export interface App {
+  id: number;
+  icon: string;
+  connector_id: number;
+  name: string;
+  extension: boolean;
+  visible: boolean;
+  provisioning: boolean;
+}
+
+export interface PersonalApp {
+  id: number;
+  name: string;
+  icon: string;
+  provisioned: string;
+  extension: boolean;
+  login_id: number;
+  personal: boolean;
+}
+
 interface AccessTokenResponse extends OneloginResponse {
   data: AccessToken[];
 }
@@ -94,11 +114,25 @@ interface RoleResponse extends OneloginResponse {
   data: Role[];
 }
 
+interface AppResponse extends OneloginResponse {
+  data: App[];
+}
+
+interface PersonalAppResponse extends OneloginResponse {
+  data: PersonalApp[];
+}
+
+export interface PersonalAppsDict {
+  [id: number]: PersonalApp[];
+}
+
 export interface OneLoginDataModel {
+  accountName?: string;
+  apps: App[];
   groups: Group[];
   users: User[];
+  personalApps: PersonalAppsDict;
   roles: Role[];
-  accountName?: string;
 }
 
 enum Method {
@@ -202,6 +236,40 @@ export default class OneLoginClient {
     } while (afterCursor);
 
     return roles;
+  }
+
+  public async fetchApps(): Promise<App[]> {
+    let apps: App[] = [];
+    let afterCursor: string | null = "";
+
+    do {
+      const result = (await this.makeRequest(
+        "/api/1/apps",
+        Method.GET,
+        {},
+        { Authorization: `bearer:${this.accessToken}` },
+      )) as AppResponse;
+
+      if (result.data) {
+        apps = [...apps, ...result.data];
+        afterCursor = result.pagination.after_cursor;
+      }
+    } while (afterCursor);
+
+    return apps;
+  }
+
+  public async fetchUserApps(userId: number): Promise<PersonalApp[]> {
+    const result = (await this.makeRequest(
+      `/api/1/users/${userId}/apps`,
+      Method.GET,
+      {},
+      { Authorization: `bearer:${this.accessToken}` },
+    )) as PersonalAppResponse;
+
+    const apps: PersonalApp[] = result.data;
+
+    return apps;
   }
 
   private async makeRequest(

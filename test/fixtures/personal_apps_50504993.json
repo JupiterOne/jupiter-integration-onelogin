@@ -1,0 +1,28 @@
+{
+  "status": {
+    "error": false,
+    "code": 200,
+    "type": "success",
+    "message": "Success"
+  },
+  "data": [
+    {
+      "id": 11111,
+      "name": "AWS DynamoDB Multi Role Production",
+      "icon": "https://image.com/mobile_50.png?1421095823",
+      "provisioned": "unknown",
+      "extension": false,
+      "login_id": 66666666,
+      "personal": true
+    },
+    {
+      "id": 32491897,
+      "name": "Dropbox",
+      "icon": "https://image.com/mobile_50.png?1431478030",
+      "provisioned": "unknown",
+      "extension": false,
+      "login_id": 99999999,
+      "personal": false
+    }
+  ]
+}

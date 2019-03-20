@@ -4,5 +4,5 @@ export interface AccountUserRelationship extends RelationshipFromIntegration {
   id?: number;
 }
 
-export const ACCOUNT_USER_RELATIONSHIP_TYPE = "onelogin_account_user";
+export const ACCOUNT_USER_RELATIONSHIP_TYPE = "onelogin_account_has_user";
 export const ACCOUNT_USER_RELATIONSHIP_CLASS = "HAS";
