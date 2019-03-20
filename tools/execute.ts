@@ -10,9 +10,9 @@ async function run(): Promise<void> {
   const logger = createLogger({ name: "local", level: TRACE });
 
   const integrationConfig = {
-    clientId: process.env.ONELOGIN_CLIENT_ID,
-    clientSecret: process.env.ONELOGIN_CLIENT_SECRET,
-    accountName: process.env.ONELOGIN_ACCOUNT_NAME,
+    clientId: process.env.ONELOGIN_LOCAL_EXECUTION_CLIENT_ID,
+    clientSecret: process.env.ONELOGIN_LOCAL_EXECUTION_CLIENT_SECRET,
+    accountName: process.env.ONELOGIN_LOCAL_EXECUTION_ACCOUNT_NAME,
   };
 
   const invocationArgs = {
