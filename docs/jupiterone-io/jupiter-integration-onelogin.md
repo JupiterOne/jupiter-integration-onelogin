@@ -2,10 +2,10 @@
 
 ## Overview
 
-JupiterOne provides a managed integration with OneLogin. The integration connects
-directly to OneLogin APIs to obtain account metadata and analyze resource
-relationships. Customers authorize access by creating an API token in your
-target OneLogin account and providing that credential to JupiterOne.
+JupiterOne provides a managed integration with OneLogin. The integration
+connects directly to OneLogin APIs to obtain account metadata and analyze
+resource relationships. Customers authorize access by creating an API token in
+your target OneLogin account and providing that credential to JupiterOne.
 
 ## Integration Instance Configuration
 
@@ -43,4 +43,5 @@ The following relationships are created/mapped:
 | `onelogin_user`    | **HAS**      | `onelogin_personal_app` |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_role`         |
 
-[1]: https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials
+[1]:
+  https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials
