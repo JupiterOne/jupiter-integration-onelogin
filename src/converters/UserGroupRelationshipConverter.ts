@@ -21,7 +21,7 @@ export function createUserGroupRelationships(users: User[]) {
     const parentKey = generateKey(GROUP_ENTITY_TYPE, user.group_id);
     const childKey = generateKey(USER_ENTITY_TYPE, user.id);
 
-    const relationship: UserGroupRelationship = {
+    const assignedRelationship: UserGroupRelationship = {
       _class: USER_GROUP_RELATIONSHIP_CLASS,
       _fromEntityKey: parentKey,
       _key: `${parentKey}_assigned_${childKey}`,
@@ -29,6 +29,14 @@ export function createUserGroupRelationships(users: User[]) {
       _toEntityKey: childKey,
     };
 
-    return [...acc, relationship];
+    const hasRelationship: UserGroupRelationship = {
+      _class: USER_GROUP_RELATIONSHIP_CLASS,
+      _fromEntityKey: parentKey,
+      _key: `${parentKey}_has_${childKey}`,
+      _type: USER_GROUP_RELATIONSHIP_TYPE,
+      _toEntityKey: childKey,
+    };
+
+    return [...acc, assignedRelationship, hasRelationship];
   }, defaultValue);
 }

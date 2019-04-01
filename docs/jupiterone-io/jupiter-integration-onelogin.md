@@ -40,6 +40,7 @@ The following relationships are created/mapped:
 | `onelogin_account` | **HAS**      | `onelogin_app`          |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_app`          |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_group`        |
+| `onelogin_user`    | **HAS**      | `onelogin_group`        |
 | `onelogin_user`    | **HAS**      | `onelogin_personal_app` |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_role`         |
 
