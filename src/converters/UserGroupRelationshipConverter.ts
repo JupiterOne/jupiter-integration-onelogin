@@ -33,10 +33,10 @@ export function createUserGroupRelationships(users: User[]) {
 
     const hasRelationship: UserGroupRelationship = {
       _class: GROUP_USER_RELATIONSHIP_CLASS,
-      _fromEntityKey: childKey,
+      _fromEntityKey: parentKey,
       _key: `${parentKey}_has_${childKey}`,
       _type: GROUP_USER_RELATIONSHIP_TYPE,
-      _toEntityKey: parentKey,
+      _toEntityKey: childKey,
     };
 
     return [...acc, assignedRelationship, hasRelationship];
