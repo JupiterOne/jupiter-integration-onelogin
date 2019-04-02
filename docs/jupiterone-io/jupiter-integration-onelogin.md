@@ -27,6 +27,7 @@ The following entity resources are ingested when the integration runs:
 | User                     | `onelogin_user` : `User`                |
 | App                      | `onelogin_app` : `Application`          |
 | Personal App             | `onelogin_personal_app` : `Application` |
+| Personal Device          | `mfa_device` : `[Key, AccessKey]`       |
 
 ## Relationships
 
@@ -38,10 +39,12 @@ The following relationships are created/mapped:
 | `onelogin_account` | **HAS**      | `onelogin_role`         |
 | `onelogin_account` | **HAS**      | `onelogin_user`         |
 | `onelogin_account` | **HAS**      | `onelogin_app`          |
+| `onelogin_account` | **HAS**      | `mfa_device`            |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_app`          |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_group`        |
 | `onelogin_user`    | **HAS**      | `onelogin_personal_app` |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_role`         |
+| `onelogin_user`    | **ASSIGNED** | `mfa_device`            |
 
 [1]:
   https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials
