@@ -98,6 +98,16 @@ export interface PersonalApp {
   personal: boolean;
 }
 
+export interface PersonalDevice {
+  id: number;
+  needs_trigger: boolean;
+  default: boolean;
+  active: boolean;
+  auth_factor_name: string;
+  type_display_name: string;
+  user_display_name: string;
+}
+
 interface AccessTokenResponse extends OneloginResponse {
   data: AccessToken[];
 }
@@ -122,8 +132,18 @@ interface PersonalAppResponse extends OneloginResponse {
   data: PersonalApp[];
 }
 
+interface PersonalDeviceResponse extends OneloginResponse {
+  data: {
+    otp_devices: PersonalDevice[];
+  };
+}
+
 export interface PersonalAppsDict {
   [id: number]: PersonalApp[];
+}
+
+export interface PersonalDevicesDict {
+  [id: number]: PersonalDevice[];
 }
 
 export interface OneLoginDataModel {
@@ -132,6 +152,7 @@ export interface OneLoginDataModel {
   groups: Group[];
   users: User[];
   personalApps: PersonalAppsDict;
+  personalDevices: PersonalDevicesDict;
   roles: Role[];
 }
 
@@ -272,13 +293,30 @@ export default class OneLoginClient {
     return apps;
   }
 
+  public async fetchUserDevices(userId: number): Promise<PersonalDevice[]> {
+    const result = (await this.makeRequest(
+      `/api/1/users/${userId}/otp_devices`,
+      Method.GET,
+      {},
+      { Authorization: `bearer:${this.accessToken}` },
+    )) as PersonalDeviceResponse;
+
+    const devices: PersonalDevice[] = result.data.otp_devices;
+
+    return devices;
+  }
+
   private async makeRequest(
     url: string,
     method: Method,
     params: {},
     headers: {},
   ): Promise<
-    AccessTokenResponse | GroupResponse | UserResponse | RoleResponse
+    | AccessTokenResponse
+    | GroupResponse
+    | UserResponse
+    | RoleResponse
+    | PersonalDeviceResponse
   > {
     let options: RequestInit = {
       method,
