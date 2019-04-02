@@ -2,6 +2,8 @@ import { User } from "../onelogin/OneLoginClient";
 
 import {
   GROUP_ENTITY_TYPE,
+  GROUP_USER_RELATIONSHIP_CLASS,
+  GROUP_USER_RELATIONSHIP_TYPE,
   USER_ENTITY_TYPE,
   USER_GROUP_RELATIONSHIP_CLASS,
   USER_GROUP_RELATIONSHIP_TYPE,
@@ -23,18 +25,18 @@ export function createUserGroupRelationships(users: User[]) {
 
     const assignedRelationship: UserGroupRelationship = {
       _class: USER_GROUP_RELATIONSHIP_CLASS,
-      _fromEntityKey: parentKey,
-      _key: `${parentKey}_assigned_${childKey}`,
+      _fromEntityKey: childKey,
+      _key: `${childKey}_assigned_${parentKey}`,
       _type: USER_GROUP_RELATIONSHIP_TYPE,
-      _toEntityKey: childKey,
+      _toEntityKey: parentKey,
     };
 
     const hasRelationship: UserGroupRelationship = {
-      _class: USER_GROUP_RELATIONSHIP_CLASS,
-      _fromEntityKey: parentKey,
+      _class: GROUP_USER_RELATIONSHIP_CLASS,
+      _fromEntityKey: childKey,
       _key: `${parentKey}_has_${childKey}`,
-      _type: USER_GROUP_RELATIONSHIP_TYPE,
-      _toEntityKey: childKey,
+      _type: GROUP_USER_RELATIONSHIP_TYPE,
+      _toEntityKey: parentKey,
     };
 
     return [...acc, assignedRelationship, hasRelationship];
