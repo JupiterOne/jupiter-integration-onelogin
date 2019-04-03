@@ -101,5 +101,5 @@ test("executionHandler", async () => {
   expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(7);
   expect(
     executionContext.persister.publishPersisterOperations,
-  ).toHaveBeenCalledTimes(1);
+  ).toHaveBeenCalledTimes(2);
 });

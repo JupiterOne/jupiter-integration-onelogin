@@ -1,6 +1,6 @@
 import { EntityFromIntegration } from "@jupiterone/jupiter-managed-integration-sdk";
 
-export const APP_ENTITY_TYPE = "onelogin_app";
+export const APP_ENTITY_TYPE = "onelogin_application";
 export const APP_ENTITY_CLASS = "Application";
 
 export interface AppEntity extends EntityFromIntegration {
