@@ -2,7 +2,9 @@ import {
   IntegrationExecutionContext,
   IntegrationExecutionResult,
   IntegrationInvocationEvent,
+  summarizePersisterOperationsResults,
 } from "@jupiterone/jupiter-managed-integration-sdk";
+import deleteDeprecatedTypes from "./deleteDeprecatedTypes";
 
 import initializeContext from "./initializeContext";
 import fetchEntitiesAndRelationships from "./jupiterone/fetchEntitiesAndRelationships";
@@ -20,6 +22,9 @@ export default async function executionHandler(
   const oneLoginData = await fetchOneLoginData(provider);
 
   return {
-    operations: await publishChanges(persister, oldData, oneLoginData, account),
+    operations: summarizePersisterOperationsResults(
+      await publishChanges(persister, oldData, oneLoginData, account),
+      await deleteDeprecatedTypes(graph, persister),
+    ),
   };
 }
