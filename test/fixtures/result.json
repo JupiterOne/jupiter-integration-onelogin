@@ -34,8 +34,8 @@
     "apps": [
       {
         "_class": "Application",
-        "_key": "onelogin_app_32491897",
-        "_type": "onelogin_app",
+        "_key": "onelogin_application_32491897",
+        "_type": "onelogin_application",
         "_icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/dropbox.png",
         "displayName": "Dropbox",
         "id": 32491897,
@@ -47,8 +47,8 @@
       },
       {
         "_class": "Application",
-        "_key": "onelogin_app_12380689",
-        "_type": "onelogin_app",
+        "_key": "onelogin_application_12380689",
+        "_type": "onelogin_application",
         "_icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/office_365.png",
         "displayName": "Office 365",
         "id": 12380689,
@@ -64,8 +64,8 @@
       {
         "_class": "Application",
         "_icon": "https://image.com/mobile_50.png?1421095823",
-        "_key": "onelogin_personal_app_11111",
-        "_type": "onelogin_personal_app",
+        "_key": "onelogin_personal_application_11111",
+        "_type": "onelogin_personal_application",
         "displayName": "AWS DynamoDB Multi Role Production",
         "id": 11111,
         "name": "AWS DynamoDB Multi Role Production",
@@ -78,8 +78,8 @@
       {
         "_class": "Application",
         "_icon": "https://image.com/mobile_50.png?1421095823",
-        "_key": "onelogin_personal_app_2222222",
-        "_type": "onelogin_personal_app",
+        "_key": "onelogin_personal_application_2222222",
+        "_type": "onelogin_personal_application",
         "displayName": "AWS DynamoDB Multi Role Production 2",
         "id": 2222222,
         "name": "AWS DynamoDB Multi Role Production 2",
@@ -236,16 +236,16 @@
       {
         "_class": "HAS",
         "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_app_32491897",
-        "_toEntityKey": "onelogin_app_32491897",
-        "_type": "onelogin_account_has_app"
+        "_key": "onelogin_account_account_xxx_has_onelogin_application_32491897",
+        "_toEntityKey": "onelogin_application_32491897",
+        "_type": "onelogin_account_has_onelogin_application"
       },
       {
         "_class": "HAS",
         "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_app_12380689",
-        "_toEntityKey": "onelogin_app_12380689",
-        "_type": "onelogin_account_has_app"
+        "_key": "onelogin_account_account_xxx_has_onelogin_application_12380689",
+        "_toEntityKey": "onelogin_application_12380689",
+        "_type": "onelogin_account_has_onelogin_application"
       }
     ],
     "accountUserRelationships": [
@@ -307,16 +307,16 @@
       {
         "_class": "ASSIGNED",
         "_fromEntityKey": "onelogin_user_50504993",
-        "_key": "onelogin_user_50504993_assigned_onelogin_app_32491897",
-        "_toEntityKey": "onelogin_app_32491897",
-        "_type": "onelogin_user_assigned_app"
+        "_key": "onelogin_user_50504993_assigned_onelogin_application_32491897",
+        "_toEntityKey": "onelogin_application_32491897",
+        "_type": "onelogin_user_assigned_onelogin_application"
       },
       {
         "_class": "ASSIGNED",
         "_fromEntityKey": "onelogin_user_50505384",
-        "_key": "onelogin_user_50505384_assigned_onelogin_app_12380689",
-        "_toEntityKey": "onelogin_app_12380689",
-        "_type": "onelogin_user_assigned_app"
+        "_key": "onelogin_user_50505384_assigned_onelogin_application_12380689",
+        "_toEntityKey": "onelogin_application_12380689",
+        "_type": "onelogin_user_assigned_onelogin_application"
       }
     ],
     "userGroupRelationships": [
@@ -362,16 +362,16 @@
       {
         "_class": "HAS",
         "_fromEntityKey": "onelogin_user_50504993",
-        "_key": "onelogin_user_50504993_has_onelogin_personal_app_11111",
-        "_toEntityKey": "onelogin_personal_app_11111",
-        "_type": "onelogin_user_has_personal_app"
+        "_key": "onelogin_user_50504993_has_onelogin_personal_application_11111",
+        "_toEntityKey": "onelogin_personal_application_11111",
+        "_type": "onelogin_user_has_onelogin_personal_application"
       },
       {
         "_class": "HAS",
         "_fromEntityKey": "onelogin_user_50505384",
-        "_key": "onelogin_user_50505384_has_onelogin_personal_app_2222222",
-        "_toEntityKey": "onelogin_personal_app_2222222",
-        "_type": "onelogin_user_has_personal_app"
+        "_key": "onelogin_user_50505384_has_onelogin_personal_application_2222222",
+        "_toEntityKey": "onelogin_personal_application_2222222",
+        "_type": "onelogin_user_has_onelogin_personal_application"
       }
     ]
   }
