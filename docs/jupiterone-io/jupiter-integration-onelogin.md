@@ -42,6 +42,7 @@ The following relationships are created/mapped:
 | `onelogin_user`    | **ASSIGNED** | `onelogin_group`                |
 | `onelogin_user`    | **HAS**      | `onelogin_personal_application` |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_role`                 |
+| `onelogin_group`   | **HAS**      | `onelogin_user`                 |
 
 [1]:
   https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials

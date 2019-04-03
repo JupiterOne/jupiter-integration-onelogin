@@ -322,10 +322,17 @@
     "userGroupRelationships": [
       {
         "_class": "ASSIGNED",
+        "_fromEntityKey": "onelogin_user_50505384",
+        "_key": "onelogin_user_50505384_assigned_onelogin_group_445014",
+        "_toEntityKey": "onelogin_group_445014",
+        "_type": "onelogin_user_assigned_onelogin_group"
+      },
+      {
+        "_class": "HAS",
         "_fromEntityKey": "onelogin_group_445014",
-        "_key": "onelogin_group_445014_assigned_onelogin_user_50505384",
-        "_type": "onelogin_user_assigned_group",
-        "_toEntityKey": "onelogin_user_50505384"
+        "_key": "onelogin_group_445014_has_onelogin_user_50505384",
+        "_toEntityKey": "onelogin_user_50505384",
+        "_type": "onelogin_group_has_onelogin_user"
       }
     ],
     "userRoleRelationships": [
