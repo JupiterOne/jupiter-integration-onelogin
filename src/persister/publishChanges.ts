@@ -21,6 +21,9 @@ import {
   createUserPersonalAppRelationships,
   createUserRoleRelationships,
 } from "../converters";
+import { createAccountPersonalDeviceRelationships } from "../converters/AccountPersonalDeviceRelationshipConverter";
+import { createPersonalDeviceEntities } from "../converters/PersonalDeviceEntityConverter";
+import { createUserPersonalDeviceRelationships } from "../converters/UserPersonalDeviceRelationshipConverter";
 
 import {
   JupiterOneDataModel,
@@ -119,6 +122,7 @@ export function convertEntities(
     users: createUserEntities(oneLoginDataModel.users),
     personalApps: createPersonalAppEntities(oneLoginDataModel.personalApps),
     roles: createRoleEntities(oneLoginDataModel.roles),
+    devices: createPersonalDeviceEntities(oneLoginDataModel.personalDevices),
   };
 }
 
@@ -140,6 +144,9 @@ export function convertRelationships(
     userPersonalAppRelationships: createUserPersonalAppRelationships(
       oneLoginDataModel.personalApps,
     ),
+    userPersonalDeviceRelationships: createUserPersonalDeviceRelationships(
+      oneLoginDataModel.personalDevices,
+    ),
     accountAppRelationships: createAccountAppRelationships(
       oneLoginDataModel.apps,
       account,
@@ -154,6 +161,10 @@ export function convertRelationships(
     ),
     accountRoleRelationships: createAccountRoleRelationships(
       oneLoginDataModel.roles,
+      account,
+    ),
+    accountPersonalDeviceRelationships: createAccountPersonalDeviceRelationships(
+      oneLoginDataModel.personalDevices,
       account,
     ),
   };

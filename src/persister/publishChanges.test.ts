@@ -22,6 +22,14 @@ const apiMocks = [
     name: "personal_apps_50505384.json",
   },
   {
+    url: "/api/1/users/50504993/otp_devices",
+    name: "personal_devices_50504993.json",
+  },
+  {
+    url: "/api/1/users/50505384/otp_devices",
+    name: "personal_devices_50505384.json",
+  },
+  {
     url: "/api/1/roles",
     name: "roles.json",
   },
