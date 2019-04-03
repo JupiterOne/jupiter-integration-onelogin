@@ -8,6 +8,7 @@ export interface JupiterOneEntitiesData {
   roles: Entities.RoleEntity[];
   apps: Entities.AppEntity[];
   personalApps: Entities.PersonalAppEntity[];
+  services: Entities.StandardizedOneloginServiceEntity[];
 }
 
 export interface JupiterOneRelationshipsData {
@@ -20,6 +21,7 @@ export interface JupiterOneRelationshipsData {
   accountUserRelationships: Entities.AccountUserRelationship[];
   accountGroupRelationships: Entities.AccountGroupRelationship[];
   accountRoleRelationships: Entities.AccountRoleRelationship[];
+  accountServiceRelationships: Entities.AccountServiceRelationship[];
 }
 
 export interface JupiterOneDataModel {
@@ -48,6 +50,7 @@ async function fetchEntities(
     roles,
     apps,
     personalApps,
+    services,
   ] = await Promise.all([
     graph.findEntitiesByType<Entities.AccountEntity>(
       Entities.ACCOUNT_ENTITY_TYPE,
@@ -59,6 +62,9 @@ async function fetchEntities(
     graph.findEntitiesByType<Entities.PersonalAppEntity>(
       Entities.PERSONAL_APP_ENTITY_TYPE,
     ),
+    graph.findEntitiesByType<Entities.StandardizedOneloginServiceEntity>(
+      Entities.SERVICE_ENTITY_TYPE,
+    ),
   ]);
 
   return {
@@ -68,6 +74,7 @@ async function fetchEntities(
     roles,
     apps,
     personalApps,
+    services,
   };
 }
 
@@ -84,6 +91,7 @@ export async function fetchRelationships(
     accountUserRelationships,
     accountGroupRelationships,
     accountRoleRelationships,
+    accountServiceRelationships,
   ] = await Promise.all([
     graph.findRelationshipsByType(Entities.USER_GROUP_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.USER_ROLE_RELATIONSHIP_TYPE),
@@ -94,6 +102,7 @@ export async function fetchRelationships(
     graph.findRelationshipsByType(Entities.ACCOUNT_USER_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.ACCOUNT_GROUP_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.ACCOUNT_ROLE_RELATIONSHIP_TYPE),
+    graph.findRelationshipsByType(Entities.ACCOUNT_SERVICE_RELATIONSHIP_TYPE),
   ]);
 
   return {
@@ -106,5 +115,6 @@ export async function fetchRelationships(
     accountUserRelationships,
     accountGroupRelationships,
     accountRoleRelationships,
+    accountServiceRelationships,
   };
 }

@@ -27,6 +27,7 @@ The following entity resources are ingested when the integration runs:
 | User                     | `onelogin_user` : `User`                        |
 | App                      | `onelogin_application` : `Application`          |
 | Personal App             | `onelogin_personal_application` : `Application` |
+| Service (SSO & MFA)      | `onelogin_service` : `['Service', 'Control']`   |
 
 ## Relationships
 
@@ -38,6 +39,7 @@ The following relationships are created/mapped:
 | `onelogin_account` | **HAS**      | `onelogin_role`                 |
 | `onelogin_account` | **HAS**      | `onelogin_user`                 |
 | `onelogin_account` | **HAS**      | `onelogin_application`          |
+| `onelogin_account` | **HAS**      | `onelogin_service`              |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_application`          |
 | `onelogin_user`    | **ASSIGNED** | `onelogin_group`                |
 | `onelogin_user`    | **HAS**      | `onelogin_personal_application` |

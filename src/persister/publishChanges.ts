@@ -21,6 +21,8 @@ import {
   createUserPersonalAppRelationships,
   createUserRoleRelationships,
 } from "../converters";
+import { createAccountServiceRelationships } from "../converters/AccountServiceRelationshipConverter";
+import { getStandardizedServiceEntities } from "../converters/ServiceEntityConverter";
 
 import {
   JupiterOneDataModel,
@@ -119,6 +121,7 @@ export function convertEntities(
     users: createUserEntities(oneLoginDataModel.users),
     personalApps: createPersonalAppEntities(oneLoginDataModel.personalApps),
     roles: createRoleEntities(oneLoginDataModel.roles),
+    services: getStandardizedServiceEntities(account.name),
   };
 }
 
@@ -154,6 +157,10 @@ export function convertRelationships(
     ),
     accountRoleRelationships: createAccountRoleRelationships(
       oneLoginDataModel.roles,
+      account,
+    ),
+    accountServiceRelationships: createAccountServiceRelationships(
+      getStandardizedServiceEntities(account.name),
       account,
     ),
   };
