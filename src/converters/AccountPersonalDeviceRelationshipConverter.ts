@@ -33,8 +33,6 @@ export function createAccountPersonalDeviceRelationships(
           _type: ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
           _toEntityKey: childKey,
           displayName: "HAS",
-          _fromEntityId: account.id,
-          _toEntityId: String(device.id),
         };
 
         acc.push(relationship);

@@ -31,10 +31,10 @@ export function createPersonalDeviceEntities(
             id: device.id,
             default: device.default,
             active: device.active,
-            auth_factor_name: device.auth_factor_name,
-            type_display_name: device.type_display_name,
-            user_display_name: device.user_display_name,
-            needs_trigger: device.needs_trigger,
+            authFactorName: device.auth_factor_name,
+            typeDisplayName: device.type_display_name,
+            userDisplayName: device.user_display_name,
+            needsTrigger: device.needs_trigger,
           }));
 
         return acc.concat(devices);

@@ -39,8 +39,6 @@ export function createUserPersonalDeviceRelationships(
             _type: USER_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
             _toEntityKey: childKey,
             displayName: "ASSIGNED",
-            _fromEntityId: userId.toString(),
-            _toEntityId: device.id.toString(),
           };
 
           return [...userDevicesAcc, relationship];
