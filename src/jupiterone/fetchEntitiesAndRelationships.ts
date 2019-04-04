@@ -8,6 +8,7 @@ export interface JupiterOneEntitiesData {
   roles: Entities.RoleEntity[];
   apps: Entities.AppEntity[];
   personalApps: Entities.PersonalAppEntity[];
+  devices: Entities.PersonalDeviceEntity[];
   services: Entities.StandardizedOneloginServiceEntity[];
 }
 
@@ -16,11 +17,13 @@ export interface JupiterOneRelationshipsData {
   userRoleRelationships: Entities.UserRoleRelationship[];
   userAppRelationships: Entities.UserAppRelationship[];
   userPersonalAppRelationships: Entities.UserPersonalAppRelationship[];
+  userPersonalDeviceRelationships: Entities.UserPersonalDeviceRelationship[];
 
   accountAppRelationships: Entities.AccountAppRelationship[];
   accountUserRelationships: Entities.AccountUserRelationship[];
   accountGroupRelationships: Entities.AccountGroupRelationship[];
   accountRoleRelationships: Entities.AccountRoleRelationship[];
+  accountPersonalDeviceRelationships: Entities.AccountPersonalDeviceRelationship[];
   accountServiceRelationships: Entities.AccountServiceRelationship[];
 }
 
@@ -50,6 +53,7 @@ async function fetchEntities(
     roles,
     apps,
     personalApps,
+    devices,
     services,
   ] = await Promise.all([
     graph.findEntitiesByType<Entities.AccountEntity>(
@@ -61,6 +65,9 @@ async function fetchEntities(
     graph.findEntitiesByType<Entities.AppEntity>(Entities.APP_ENTITY_TYPE),
     graph.findEntitiesByType<Entities.PersonalAppEntity>(
       Entities.PERSONAL_APP_ENTITY_TYPE,
+    ),
+    graph.findEntitiesByType<Entities.PersonalDeviceEntity>(
+      Entities.PERSONAL_DEVICE_ENTITY_TYPE,
     ),
     graph.findEntitiesByType<Entities.StandardizedOneloginServiceEntity>(
       Entities.SERVICE_ENTITY_TYPE,
@@ -74,6 +81,7 @@ async function fetchEntities(
     roles,
     apps,
     personalApps,
+    devices,
     services,
   };
 }
@@ -86,22 +94,30 @@ export async function fetchRelationships(
     userRoleRelationships,
     userAppRelationships,
     userPersonalAppRelationships,
+    userPersonalDeviceRelationships,
 
     accountAppRelationships,
     accountUserRelationships,
     accountGroupRelationships,
     accountRoleRelationships,
+    accountPersonalDeviceRelationships,
     accountServiceRelationships,
   ] = await Promise.all([
     graph.findRelationshipsByType(Entities.USER_GROUP_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.USER_ROLE_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.USER_APP_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.USER_PERSONAL_APP_RELATIONSHIP_TYPE),
+    graph.findRelationshipsByType(
+      Entities.USER_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
+    ),
 
     graph.findRelationshipsByType(Entities.ACCOUNT_APP_RELATIONSHIP_CLASS),
     graph.findRelationshipsByType(Entities.ACCOUNT_USER_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.ACCOUNT_GROUP_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.ACCOUNT_ROLE_RELATIONSHIP_TYPE),
+    graph.findRelationshipsByType(
+      Entities.ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
+    ),
     graph.findRelationshipsByType(Entities.ACCOUNT_SERVICE_RELATIONSHIP_TYPE),
   ]);
 
@@ -110,11 +126,13 @@ export async function fetchRelationships(
     userRoleRelationships,
     userAppRelationships,
     userPersonalAppRelationships,
+    userPersonalDeviceRelationships,
 
     accountAppRelationships,
     accountUserRelationships,
     accountGroupRelationships,
     accountRoleRelationships,
+    accountPersonalDeviceRelationships,
     accountServiceRelationships,
   };
 }

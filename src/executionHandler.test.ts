@@ -73,6 +73,7 @@ test("executionHandler", async () => {
         },
       ]),
       fetchUserApps: jest.fn().mockReturnValue([]),
+      fetchUserDevices: jest.fn().mockReturnValue([]),
     },
     account: {
       id: "",

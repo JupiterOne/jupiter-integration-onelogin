@@ -10,6 +10,35 @@
       }
     ],
 
+    "devices": [
+      {
+        "_class": ["Key", "AccessKey"],
+        "_key": "mfa_device_111111",
+        "_type": "mfa_device",
+        "active": true,
+        "authFactorName": "OneLogin Protect",
+        "default": false,
+        "displayName": "OneLogin Protect",
+        "id": 111111,
+        "needsTrigger": true,
+        "typeDisplayName": "OneLogin Protect",
+        "userDisplayName": "OneLogin Protect"
+      },
+      {
+        "_class": ["Key", "AccessKey"],
+        "_key": "mfa_device_222222",
+        "_type": "mfa_device",
+        "active": true,
+        "authFactorName": "Google Authenticator",
+        "default": false,
+        "displayName": "Google Authenticator",
+        "id": 222222,
+        "needsTrigger": false,
+        "typeDisplayName": "Google Authenticator",
+        "userDisplayName": "Google Authenticator"
+      }
+    ],
+
     "groups": [
       {
         "_class": "UserGroup",
@@ -310,6 +339,24 @@
         "_type": "onelogin_account_has_group"
       }
     ],
+    "accountPersonalDeviceRelationships": [
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_mfa_device_111111",
+        "_toEntityKey": "mfa_device_111111",
+        "_type": "onelogin_account_has_mfa_device",
+        "displayName": "HAS"
+      },
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_mfa_device_222222",
+        "_toEntityKey": "mfa_device_222222",
+        "_type": "onelogin_account_has_mfa_device",
+        "displayName": "HAS"
+      }
+    ],
     "accountRoleRelationships": [
       {
         "_class": "HAS",
@@ -372,6 +419,24 @@
         "_key": "onelogin_group_445014_has_onelogin_user_50505384",
         "_toEntityKey": "onelogin_user_50505384",
         "_type": "onelogin_group_has_onelogin_user"
+      }
+    ],
+    "userPersonalDeviceRelationships": [
+      {
+        "_class": "ASSIGNED",
+        "_fromEntityKey": "onelogin_user_50504993",
+        "_key": "onelogin_user_50504993_assigned_mfa_device_111111",
+        "_toEntityKey": "mfa_device_111111",
+        "_type": "onelogin_user_assigned_mfa_device",
+        "displayName": "ASSIGNED"
+      },
+      {
+        "_class": "ASSIGNED",
+        "_fromEntityKey": "onelogin_user_50504993",
+        "_key": "onelogin_user_50504993_assigned_mfa_device_222222",
+        "_toEntityKey": "mfa_device_222222",
+        "_type": "onelogin_user_assigned_mfa_device",
+        "displayName": "ASSIGNED"
       }
     ],
     "userRoleRelationships": [

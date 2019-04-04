@@ -1,0 +1,11 @@
+{
+  "status": {
+    "type": "success",
+    "code": 200,
+    "message": "Success",
+    "error": false
+  },
+  "data": {
+    "otp_devices": []
+  }
+}

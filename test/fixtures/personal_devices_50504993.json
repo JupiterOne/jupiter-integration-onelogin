@@ -1,0 +1,30 @@
+{
+  "status": {
+    "type": "success",
+    "code": 200,
+    "message": "Success",
+    "error": false
+  },
+  "data": {
+    "otp_devices": [
+      {
+        "needs_trigger": true,
+        "default": false,
+        "active": true,
+        "auth_factor_name": "OneLogin Protect",
+        "type_display_name": "OneLogin Protect",
+        "user_display_name": "OneLogin Protect",
+        "id": 111111
+      },
+      {
+        "needs_trigger": false,
+        "default": false,
+        "active": true,
+        "auth_factor_name": "Google Authenticator",
+        "type_display_name": "Google Authenticator",
+        "user_display_name": "Google Authenticator",
+        "id": 222222
+      }
+    ]
+  }
+}

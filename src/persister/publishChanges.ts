@@ -9,20 +9,23 @@ import {
   createAccountAppRelationships,
   createAccountEntity,
   createAccountGroupRelationships,
+  createAccountPersonalDeviceRelationships,
   createAccountRoleRelationships,
+  createAccountServiceRelationships,
   createAccountUserRelationships,
   createAppEntities,
   createGroupEntities,
   createPersonalAppEntities,
+  createPersonalDeviceEntities,
   createRoleEntities,
   createUserAppRelationships,
   createUserEntities,
   createUserGroupRelationships,
   createUserPersonalAppRelationships,
+  createUserPersonalDeviceRelationships,
   createUserRoleRelationships,
+  getStandardizedServiceEntities,
 } from "../converters";
-import { createAccountServiceRelationships } from "../converters/AccountServiceRelationshipConverter";
-import { getStandardizedServiceEntities } from "../converters/ServiceEntityConverter";
 
 import {
   JupiterOneDataModel,
@@ -121,6 +124,7 @@ export function convertEntities(
     users: createUserEntities(oneLoginDataModel.users),
     personalApps: createPersonalAppEntities(oneLoginDataModel.personalApps),
     roles: createRoleEntities(oneLoginDataModel.roles),
+    devices: createPersonalDeviceEntities(oneLoginDataModel.personalDevices),
     services: getStandardizedServiceEntities(account.name),
   };
 }
@@ -143,6 +147,9 @@ export function convertRelationships(
     userPersonalAppRelationships: createUserPersonalAppRelationships(
       oneLoginDataModel.personalApps,
     ),
+    userPersonalDeviceRelationships: createUserPersonalDeviceRelationships(
+      oneLoginDataModel.personalDevices,
+    ),
     accountAppRelationships: createAccountAppRelationships(
       oneLoginDataModel.apps,
       account,
@@ -157,6 +164,10 @@ export function convertRelationships(
     ),
     accountRoleRelationships: createAccountRoleRelationships(
       oneLoginDataModel.roles,
+      account,
+    ),
+    accountPersonalDeviceRelationships: createAccountPersonalDeviceRelationships(
+      oneLoginDataModel.personalDevices,
       account,
     ),
     accountServiceRelationships: createAccountServiceRelationships(

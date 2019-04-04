@@ -1,6 +1,7 @@
 import OneLoginClient, {
   OneLoginDataModel,
   PersonalAppsDict,
+  PersonalDevicesDict,
 } from "./OneLoginClient";
 
 export default async function fetchOneLoginData(
@@ -14,9 +15,11 @@ export default async function fetchOneLoginData(
   ]);
 
   const personalApps: PersonalAppsDict = {};
+  const personalDevices: PersonalDevicesDict = {};
   for (let i = 0; i < apps.length; i++) {
     personalApps[users[i].id] = await client.fetchUserApps(users[i].id);
+    personalDevices[users[i].id] = await client.fetchUserDevices(users[i].id);
   }
 
-  return { users, groups, roles, apps, personalApps };
+  return { users, groups, roles, apps, personalApps, personalDevices };
 }
