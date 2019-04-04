@@ -257,6 +257,29 @@
         "displayName": "New role",
         "name": "New role"
       }
+    ],
+
+    "services": [
+      {
+        "_class": ["Service", "Control"],
+        "_key": "onelogin:sso:test-name",
+        "_type": "onelogin_service",
+        "category": "security",
+        "controlDomain": "identity-access",
+        "displayName": "Onelogin SSO",
+        "function": "sso",
+        "name": "SSO"
+      },
+      {
+        "_class": ["Service", "Control"],
+        "_key": "onelogin:mfa:test-name",
+        "_type": "onelogin_service",
+        "category": "security",
+        "controlDomain": "identity-access",
+        "displayName": "Onelogin MFA",
+        "function": "mfa",
+        "name": "MFA"
+      }
     ]
   },
 
@@ -348,6 +371,22 @@
         "_key": "onelogin_account_account_xxx_has_onelogin_role_252336",
         "_toEntityKey": "onelogin_role_252336",
         "_type": "onelogin_account_has_role"
+      }
+    ],
+    "accountServiceRelationships": [
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_onelogin:sso:test-name",
+        "_toEntityKey": "onelogin:sso:test-name",
+        "_type": "onelogin_account_has_onelogin_service"
+      },
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_onelogin:mfa:test-name",
+        "_toEntityKey": "onelogin:mfa:test-name",
+        "_type": "onelogin_account_has_onelogin_service"
       }
     ],
     "userAppRelationships": [

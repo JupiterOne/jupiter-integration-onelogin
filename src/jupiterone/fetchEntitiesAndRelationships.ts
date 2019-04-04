@@ -9,6 +9,7 @@ export interface JupiterOneEntitiesData {
   apps: Entities.AppEntity[];
   personalApps: Entities.PersonalAppEntity[];
   devices: Entities.PersonalDeviceEntity[];
+  services: Entities.ServiceEntity[];
 }
 
 export interface JupiterOneRelationshipsData {
@@ -23,6 +24,7 @@ export interface JupiterOneRelationshipsData {
   accountGroupRelationships: Entities.AccountGroupRelationship[];
   accountRoleRelationships: Entities.AccountRoleRelationship[];
   accountPersonalDeviceRelationships: Entities.AccountPersonalDeviceRelationship[];
+  accountServiceRelationships: Entities.AccountServiceRelationship[];
 }
 
 export interface JupiterOneDataModel {
@@ -52,6 +54,7 @@ async function fetchEntities(
     apps,
     personalApps,
     devices,
+    services,
   ] = await Promise.all([
     graph.findEntitiesByType<Entities.AccountEntity>(
       Entities.ACCOUNT_ENTITY_TYPE,
@@ -66,6 +69,9 @@ async function fetchEntities(
     graph.findEntitiesByType<Entities.PersonalDeviceEntity>(
       Entities.PERSONAL_DEVICE_ENTITY_TYPE,
     ),
+    graph.findEntitiesByType<Entities.ServiceEntity>(
+      Entities.SERVICE_ENTITY_TYPE,
+    ),
   ]);
 
   return {
@@ -76,6 +82,7 @@ async function fetchEntities(
     apps,
     personalApps,
     devices,
+    services,
   };
 }
 
@@ -94,6 +101,7 @@ export async function fetchRelationships(
     accountGroupRelationships,
     accountRoleRelationships,
     accountPersonalDeviceRelationships,
+    accountServiceRelationships,
   ] = await Promise.all([
     graph.findRelationshipsByType(Entities.USER_GROUP_RELATIONSHIP_TYPE),
     graph.findRelationshipsByType(Entities.USER_ROLE_RELATIONSHIP_TYPE),
@@ -110,6 +118,7 @@ export async function fetchRelationships(
     graph.findRelationshipsByType(
       Entities.ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
     ),
+    graph.findRelationshipsByType(Entities.ACCOUNT_SERVICE_RELATIONSHIP_TYPE),
   ]);
 
   return {
@@ -124,5 +133,6 @@ export async function fetchRelationships(
     accountGroupRelationships,
     accountRoleRelationships,
     accountPersonalDeviceRelationships,
+    accountServiceRelationships,
   };
 }
