@@ -377,15 +377,15 @@
       {
         "_class": "HAS",
         "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_service_onelogin:sso:test-name",
-        "_toEntityKey": "onelogin_service_onelogin:sso:test-name",
+        "_key": "onelogin_account_account_xxx_has_onelogin:sso:test-name",
+        "_toEntityKey": "onelogin:sso:test-name",
         "_type": "onelogin_account_has_onelogin_service"
       },
       {
         "_class": "HAS",
         "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_service_onelogin:mfa:test-name",
-        "_toEntityKey": "onelogin_service_onelogin:mfa:test-name",
+        "_key": "onelogin_account_account_xxx_has_onelogin:mfa:test-name",
+        "_toEntityKey": "onelogin:mfa:test-name",
         "_type": "onelogin_account_has_onelogin_service"
       }
     ],
