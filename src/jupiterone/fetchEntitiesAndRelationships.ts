@@ -9,7 +9,7 @@ export interface JupiterOneEntitiesData {
   apps: Entities.AppEntity[];
   personalApps: Entities.PersonalAppEntity[];
   devices: Entities.PersonalDeviceEntity[];
-  services: Entities.StandardizedOneloginServiceEntity[];
+  services: Entities.ServiceEntity[];
 }
 
 export interface JupiterOneRelationshipsData {
@@ -69,7 +69,7 @@ async function fetchEntities(
     graph.findEntitiesByType<Entities.PersonalDeviceEntity>(
       Entities.PERSONAL_DEVICE_ENTITY_TYPE,
     ),
-    graph.findEntitiesByType<Entities.StandardizedOneloginServiceEntity>(
+    graph.findEntitiesByType<Entities.ServiceEntity>(
       Entities.SERVICE_ENTITY_TYPE,
     ),
   ]);

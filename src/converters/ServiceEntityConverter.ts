@@ -1,13 +1,13 @@
 import {
   SERVICE_ENTITY_CLASS,
   SERVICE_ENTITY_TYPE,
-  StandardizedOneloginServiceEntity,
+  ServiceEntity,
 } from "../jupiterone";
 
-export function getStandardizedServiceEntities(
+export function getServiceEntities(
   oneloginAccountInfoName: string,
-): StandardizedOneloginServiceEntity[] {
-  const ssoService: StandardizedOneloginServiceEntity = {
+): ServiceEntity[] {
+  const ssoService: ServiceEntity = {
     _type: SERVICE_ENTITY_TYPE,
     _key: `onelogin:sso:${oneloginAccountInfoName}`,
     _class: SERVICE_ENTITY_CLASS,
@@ -18,7 +18,7 @@ export function getStandardizedServiceEntities(
     controlDomain: "identity-access",
   };
 
-  const mfaService: StandardizedOneloginServiceEntity = {
+  const mfaService: ServiceEntity = {
     _type: SERVICE_ENTITY_TYPE,
     _key: `onelogin:mfa:${oneloginAccountInfoName}`,
     _class: SERVICE_ENTITY_CLASS,

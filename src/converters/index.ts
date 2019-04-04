@@ -33,4 +33,4 @@ export {
 export {
   createAccountServiceRelationships,
 } from "./AccountServiceRelationshipConverter";
-export { getStandardizedServiceEntities } from "./ServiceEntityConverter";
+export { getServiceEntities } from "./ServiceEntityConverter";

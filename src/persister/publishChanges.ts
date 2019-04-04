@@ -24,7 +24,7 @@ import {
   createUserPersonalAppRelationships,
   createUserPersonalDeviceRelationships,
   createUserRoleRelationships,
-  getStandardizedServiceEntities,
+  getServiceEntities,
 } from "../converters";
 
 import {
@@ -125,7 +125,7 @@ export function convertEntities(
     personalApps: createPersonalAppEntities(oneLoginDataModel.personalApps),
     roles: createRoleEntities(oneLoginDataModel.roles),
     devices: createPersonalDeviceEntities(oneLoginDataModel.personalDevices),
-    services: getStandardizedServiceEntities(account.name),
+    services: getServiceEntities(account.name),
   };
 }
 
@@ -171,7 +171,7 @@ export function convertRelationships(
       account,
     ),
     accountServiceRelationships: createAccountServiceRelationships(
-      getStandardizedServiceEntities(account.name),
+      getServiceEntities(account.name),
       account,
     ),
   };
