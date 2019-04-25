@@ -1,6 +1,6 @@
 # JupiterOne Managed Integration for OneLogin
 
-[![Build Status](https://travis-ci.org/JupiterOne/jupiter-integration-onelogin.svg?branch=master)](https://travis-ci.org/JupterOne/jupiter-integration-onelogin)
+[![Build Status](https://travis-ci.org/JupiterOne/jupiter-integration-onelogin.svg?branch=master)](https://travis-ci.org/JupiterOne/jupiter-integration-onelogin)
 
 A JupiterOne integration ingests information such as configurations and other
 metadata about digital and physical assets belonging to an organization. The
