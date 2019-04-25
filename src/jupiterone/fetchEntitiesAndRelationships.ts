@@ -1,4 +1,7 @@
-import { GraphClient } from "@jupiterone/jupiter-managed-integration-sdk";
+import {
+  GraphClient,
+  RelationshipFromIntegration,
+} from "@jupiterone/jupiter-managed-integration-sdk";
 import * as Entities from "./entities";
 
 export interface JupiterOneEntitiesData {
@@ -103,22 +106,40 @@ export async function fetchRelationships(
     accountPersonalDeviceRelationships,
     accountServiceRelationships,
   ] = await Promise.all([
-    graph.findRelationshipsByType(Entities.USER_GROUP_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(Entities.USER_ROLE_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(Entities.USER_APP_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(Entities.USER_PERSONAL_APP_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.USER_GROUP_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.USER_ROLE_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.USER_APP_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.USER_PERSONAL_APP_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
       Entities.USER_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
     ),
 
-    graph.findRelationshipsByType(Entities.ACCOUNT_APP_RELATIONSHIP_CLASS),
-    graph.findRelationshipsByType(Entities.ACCOUNT_USER_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(Entities.ACCOUNT_GROUP_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(Entities.ACCOUNT_ROLE_RELATIONSHIP_TYPE),
-    graph.findRelationshipsByType(
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.ACCOUNT_APP_RELATIONSHIP_CLASS,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.ACCOUNT_USER_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.ACCOUNT_GROUP_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.ACCOUNT_ROLE_RELATIONSHIP_TYPE,
+    ),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
       Entities.ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
     ),
-    graph.findRelationshipsByType(Entities.ACCOUNT_SERVICE_RELATIONSHIP_TYPE),
+    graph.findRelationshipsByType<RelationshipFromIntegration>(
+      Entities.ACCOUNT_SERVICE_RELATIONSHIP_TYPE,
+    ),
   ]);
 
   return {

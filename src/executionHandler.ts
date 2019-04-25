@@ -1,7 +1,6 @@
 import {
   IntegrationExecutionContext,
   IntegrationExecutionResult,
-  IntegrationInvocationEvent,
   summarizePersisterOperationsResults,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 import deleteDeprecatedTypes from "./deleteDeprecatedTypes";
@@ -12,7 +11,7 @@ import fetchOneLoginData from "./onelogin/fetchOneLoginData";
 import publishChanges from "./persister/publishChanges";
 
 export default async function executionHandler(
-  context: IntegrationExecutionContext<IntegrationInvocationEvent>,
+  context: IntegrationExecutionContext,
 ): Promise<IntegrationExecutionResult> {
   const { graph, persister, provider, account } = await initializeContext(
     context,
