@@ -9,7 +9,34 @@
         "name": "test-name"
       }
     ],
-
+    "apps": [
+      {
+        "_class": "Application",
+        "_icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/dropbox.png",
+        "_key": "onelogin_application_32491897",
+        "_type": "onelogin_application",
+        "connector_id": 176,
+        "displayName": "Dropbox",
+        "extension": true,
+        "id": 32491897,
+        "name": "Dropbox",
+        "provisioning": true,
+        "visible": true
+      },
+      {
+        "_class": "Application",
+        "_icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/office_365.png",
+        "_key": "onelogin_application_12380689",
+        "_type": "onelogin_application",
+        "connector_id": 7164,
+        "displayName": "Office 365",
+        "extension": true,
+        "id": 12380689,
+        "name": "Office 365",
+        "provisioning": false,
+        "visible": true
+      }
+    ],
     "devices": [
       {
         "_class": ["Key", "AccessKey"],
@@ -38,57 +65,26 @@
         "userDisplayName": "Google Authenticator"
       }
     ],
-
     "groups": [
       {
         "_class": "UserGroup",
         "_key": "onelogin_group_445014",
         "_type": "onelogin_group",
-        "id": 445014,
         "displayName": "First Group",
-        "reference": null,
-        "name": "First Group"
+        "id": 445014,
+        "name": "First Group",
+        "reference": null
       },
       {
         "_class": "UserGroup",
         "_key": "onelogin_group_445039",
         "_type": "onelogin_group",
-        "id": 445039,
         "displayName": "Second Group",
-        "reference": null,
-        "name": "Second Group"
+        "id": 445039,
+        "name": "Second Group",
+        "reference": null
       }
     ],
-
-    "apps": [
-      {
-        "_class": "Application",
-        "_key": "onelogin_application_32491897",
-        "_type": "onelogin_application",
-        "_icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/dropbox.png",
-        "displayName": "Dropbox",
-        "id": 32491897,
-        "connector_id": 176,
-        "name": "Dropbox",
-        "extension": true,
-        "visible": true,
-        "provisioning": true
-      },
-      {
-        "_class": "Application",
-        "_key": "onelogin_application_12380689",
-        "_type": "onelogin_application",
-        "_icon": "https://s3.amazonaws.com/onelogin-assets/images/icons/office_365.png",
-        "displayName": "Office 365",
-        "id": 12380689,
-        "connector_id": 7164,
-        "name": "Office 365",
-        "extension": true,
-        "visible": true,
-        "provisioning": false
-      }
-    ],
-
     "personalApps": [
       {
         "_class": "Application",
@@ -96,13 +92,13 @@
         "_key": "onelogin_personal_application_11111",
         "_type": "onelogin_personal_application",
         "displayName": "AWS DynamoDB Multi Role Production",
-        "id": 11111,
-        "name": "AWS DynamoDB Multi Role Production",
-        "icon": "https://image.com/mobile_50.png?1421095823",
-        "provisioned": "unknown",
         "extension": false,
+        "icon": "https://image.com/mobile_50.png?1421095823",
+        "id": 11111,
         "login_id": 66666666,
-        "personal": true
+        "name": "AWS DynamoDB Multi Role Production",
+        "personal": true,
+        "provisioned": "unknown"
       },
       {
         "_class": "Application",
@@ -110,155 +106,33 @@
         "_key": "onelogin_personal_application_2222222",
         "_type": "onelogin_personal_application",
         "displayName": "AWS DynamoDB Multi Role Production 2",
-        "id": 2222222,
-        "name": "AWS DynamoDB Multi Role Production 2",
-        "icon": "https://image.com/mobile_50.png?1421095823",
-        "provisioned": "unknown",
         "extension": false,
+        "icon": "https://image.com/mobile_50.png?1421095823",
+        "id": 2222222,
         "login_id": 66666666,
-        "personal": true
+        "name": "AWS DynamoDB Multi Role Production 2",
+        "personal": true,
+        "provisioned": "unknown"
       }
     ],
-
-    "users": [
-      {
-        "_key": "onelogin_user_50504993",
-        "_type": "onelogin_user",
-        "_class": "User",
-        "id": 50504993,
-        "displayName": "FirstName LastName",
-        "activatedAt": "2019-02-22T08:13:55.787Z",
-        "createdAt": "2019-02-22T08:12:56.300Z",
-        "email": "first.user@user.local",
-        "username": "",
-        "firstname": "FirstName",
-        "groupId": 0,
-        "invalidLoginAttempts": null,
-        "invitationSentAt": "2019-02-22T08:12:56.268Z",
-        "lastLogin": "2019-02-25T08:04:08.748Z",
-        "lastname": "LastName",
-        "lockedUntil": null,
-        "comment": "",
-        "openidName": "first.user",
-        "localeCode": null,
-        "preferredLocaleCode": null,
-        "passwordChangedAt": "2019-02-22T08:13:55.945Z",
-        "phone": null,
-        "status": 1,
-        "updatedAt": "2019-02-25T08:05:58.162Z",
-        "distinguishedName": null,
-        "externalId": null,
-        "directoryId": null,
-        "memberOf": null,
-        "samaccountname": null,
-        "userprincipalname": null,
-        "managerAdId": null,
-        "managerUserId": null,
-        "company": null,
-        "department": null,
-        "title": null,
-        "state": 1,
-        "trustedIdpId": null
-      },
-      {
-        "_key": "onelogin_user_50505384",
-        "_type": "onelogin_user",
-        "_class": "User",
-        "id": 50505384,
-        "displayName": "SecondUserName SecondLastName",
-        "activatedAt": null,
-        "createdAt": "2019-02-22T10:06:18.303Z",
-        "email": "",
-        "username": "second_user",
-        "firstname": "SecondUserName",
-        "groupId": 445014,
-        "invalidLoginAttempts": null,
-        "invitationSentAt": null,
-        "lastLogin": null,
-        "lastname": "SecondLastName",
-        "lockedUntil": null,
-        "comment": "",
-        "openidName": "second_user",
-        "localeCode": null,
-        "preferredLocaleCode": null,
-        "passwordChangedAt": null,
-        "phone": "",
-        "status": 1,
-        "updatedAt": "2019-02-22T10:06:18.291Z",
-        "distinguishedName": null,
-        "externalId": null,
-        "directoryId": null,
-        "memberOf": null,
-        "samaccountname": null,
-        "userprincipalname": null,
-        "managerAdId": null,
-        "managerUserId": null,
-        "company": "",
-        "department": "",
-        "title": "",
-        "state": 1,
-        "trustedIdpId": null
-      },
-      {
-        "_key": "onelogin_user_50505111",
-        "_type": "onelogin_user",
-        "_class": "User",
-        "id": 50505111,
-        "displayName": "fname lname",
-        "activatedAt": null,
-        "createdAt": "2019-02-22T10:06:18.303Z",
-        "email": "third_user@user.local",
-        "username": "third_user",
-        "firstname": "fname",
-        "groupId": 0,
-        "invalidLoginAttempts": null,
-        "invitationSentAt": null,
-        "lastLogin": null,
-        "lastname": "lname",
-        "lockedUntil": null,
-        "comment": "",
-        "openidName": "",
-        "localeCode": null,
-        "preferredLocaleCode": null,
-        "passwordChangedAt": null,
-        "phone": "",
-        "status": 1,
-        "updatedAt": "2019-02-22T10:06:18.291Z",
-        "distinguishedName": null,
-        "externalId": null,
-        "directoryId": null,
-        "memberOf": null,
-        "samaccountname": null,
-        "userprincipalname": null,
-        "managerAdId": null,
-        "managerUserId": null,
-        "company": "",
-        "department": "",
-        "title": "",
-        "state": 1,
-        "trustedIdpId": null
-      }
-    ],
-
     "roles": [
       {
         "_class": "AccessRole",
         "_key": "onelogin_role_252104",
         "_type": "onelogin_role",
-        "id": 252104,
         "displayName": "Default",
+        "id": 252104,
         "name": "Default"
       },
       {
         "_class": "AccessRole",
         "_key": "onelogin_role_252336",
         "_type": "onelogin_role",
-        "id": 252336,
         "displayName": "New role",
+        "id": 252336,
         "name": "New role"
       }
     ],
-
     "services": [
       {
         "_class": ["Service", "Control"],
@@ -280,9 +154,127 @@
         "function": "mfa",
         "name": "MFA"
       }
+    ],
+    "users": [
+      {
+        "_class": "User",
+        "_key": "onelogin_user_50504993",
+        "_type": "onelogin_user",
+        "activatedAt": 1550823235787,
+        "comment": "",
+        "company": null,
+        "createdAt": 1550823176300,
+        "department": null,
+        "directoryId": null,
+        "displayName": "FirstName LastName",
+        "distinguishedName": null,
+        "email": "first.user@user.local",
+        "externalId": null,
+        "firstname": "FirstName",
+        "groupId": 0,
+        "id": 50504993,
+        "invalidLoginAttempts": null,
+        "invitationSentAt": 1550823176268,
+        "lastLogin": 1551081848748,
+        "lastname": "LastName",
+        "localeCode": null,
+        "lockedUntil": null,
+        "managerAdId": null,
+        "managerUserId": null,
+        "memberOf": null,
+        "openidName": "first.user",
+        "passwordChangedAt": 1550823235945,
+        "phone": null,
+        "preferredLocaleCode": null,
+        "samaccountname": null,
+        "state": 1,
+        "status": 1,
+        "title": null,
+        "trustedIdpId": null,
+        "updatedAt": 1551081958162,
+        "username": "",
+        "userprincipalname": null
+      },
+      {
+        "_class": "User",
+        "_key": "onelogin_user_50505384",
+        "_type": "onelogin_user",
+        "activatedAt": null,
+        "comment": "",
+        "company": "",
+        "createdAt": 1550829978303,
+        "department": "",
+        "directoryId": null,
+        "displayName": "SecondUserName SecondLastName",
+        "distinguishedName": null,
+        "email": "",
+        "externalId": null,
+        "firstname": "SecondUserName",
+        "groupId": 445014,
+        "id": 50505384,
+        "invalidLoginAttempts": null,
+        "invitationSentAt": null,
+        "lastLogin": null,
+        "lastname": "SecondLastName",
+        "localeCode": null,
+        "lockedUntil": null,
+        "managerAdId": null,
+        "managerUserId": null,
+        "memberOf": null,
+        "openidName": "second_user",
+        "passwordChangedAt": null,
+        "phone": "",
+        "preferredLocaleCode": null,
+        "samaccountname": null,
+        "state": 1,
+        "status": 1,
+        "title": "",
+        "trustedIdpId": null,
+        "updatedAt": 1550829978291,
+        "username": "second_user",
+        "userprincipalname": null
+      },
+      {
+        "_class": "User",
+        "_key": "onelogin_user_50505111",
+        "_type": "onelogin_user",
+        "activatedAt": null,
+        "comment": "",
+        "company": "",
+        "createdAt": 1550829978303,
+        "department": "",
+        "directoryId": null,
+        "displayName": "fname lname",
+        "distinguishedName": null,
+        "email": "third_user@user.local",
+        "externalId": null,
+        "firstname": "fname",
+        "groupId": 0,
+        "id": 50505111,
+        "invalidLoginAttempts": null,
+        "invitationSentAt": null,
+        "lastLogin": null,
+        "lastname": "lname",
+        "localeCode": null,
+        "lockedUntil": null,
+        "managerAdId": null,
+        "managerUserId": null,
+        "memberOf": null,
+        "openidName": "",
+        "passwordChangedAt": null,
+        "phone": "",
+        "preferredLocaleCode": null,
+        "samaccountname": null,
+        "state": 1,
+        "status": 1,
+        "title": "",
+        "trustedIdpId": null,
+        "updatedAt": 1550829978291,
+        "username": "third_user",
+        "userprincipalname": null
+      }
     ]
   },
-
   "relationships": {
     "accountAppRelationships": [
       {
@@ -298,29 +290,6 @@
         "_key": "onelogin_account_account_xxx_has_onelogin_application_12380689",
         "_toEntityKey": "onelogin_application_12380689",
         "_type": "onelogin_account_has_onelogin_application"
-      }
-    ],
-    "accountUserRelationships": [
-      {
-        "_class": "HAS",
-        "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_user_50504993",
-        "_toEntityKey": "onelogin_user_50504993",
-        "_type": "onelogin_account_has_user"
-      },
-      {
-        "_class": "HAS",
-        "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_user_50505384",
-        "_toEntityKey": "onelogin_user_50505384",
-        "_type": "onelogin_account_has_user"
-      },
-      {
-        "_class": "HAS",
-        "_fromEntityKey": "onelogin_account_account_xxx",
-        "_key": "onelogin_account_account_xxx_has_onelogin_user_50505111",
-        "_toEntityKey": "onelogin_user_50505111",
-        "_type": "onelogin_account_has_user"
       }
     ],
     "accountGroupRelationships": [
@@ -389,6 +358,29 @@
         "_type": "onelogin_account_has_onelogin_service"
       }
     ],
+    "accountUserRelationships": [
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_onelogin_user_50504993",
+        "_toEntityKey": "onelogin_user_50504993",
+        "_type": "onelogin_account_has_user"
+      },
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_onelogin_user_50505384",
+        "_toEntityKey": "onelogin_user_50505384",
+        "_type": "onelogin_account_has_user"
+      },
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_account_account_xxx",
+        "_key": "onelogin_account_account_xxx_has_onelogin_user_50505111",
+        "_toEntityKey": "onelogin_user_50505111",
+        "_type": "onelogin_account_has_user"
+      }
+    ],
     "userAppRelationships": [
       {
         "_class": "ASSIGNED",
@@ -421,6 +413,22 @@
         "_type": "onelogin_group_has_onelogin_user"
       }
     ],
+    "userPersonalAppRelationships": [
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_user_50504993",
+        "_key": "onelogin_user_50504993_has_onelogin_personal_application_11111",
+        "_toEntityKey": "onelogin_personal_application_11111",
+        "_type": "onelogin_user_has_onelogin_personal_application"
+      },
+      {
+        "_class": "HAS",
+        "_fromEntityKey": "onelogin_user_50505384",
+        "_key": "onelogin_user_50505384_has_onelogin_personal_application_2222222",
+        "_toEntityKey": "onelogin_personal_application_2222222",
+        "_type": "onelogin_user_has_onelogin_personal_application"
+      }
+    ],
     "userPersonalDeviceRelationships": [
       {
         "_class": "ASSIGNED",
@@ -444,38 +452,22 @@
         "_class": "ASSIGNED",
         "_fromEntityKey": "onelogin_user_50504993",
         "_key": "onelogin_user_50504993_assigned_onelogin_role_252104",
-        "_type": "onelogin_user_assigned_role",
-        "_toEntityKey": "onelogin_role_252104"
+        "_toEntityKey": "onelogin_role_252104",
+        "_type": "onelogin_user_assigned_role"
       },
       {
         "_class": "ASSIGNED",
         "_fromEntityKey": "onelogin_user_50505384",
         "_key": "onelogin_user_50505384_assigned_onelogin_role_252104",
-        "_type": "onelogin_user_assigned_role",
-        "_toEntityKey": "onelogin_role_252104"
+        "_toEntityKey": "onelogin_role_252104",
+        "_type": "onelogin_user_assigned_role"
       },
       {
         "_class": "ASSIGNED",
         "_fromEntityKey": "onelogin_user_50505384",
         "_key": "onelogin_user_50505384_assigned_onelogin_role_252336",
-        "_type": "onelogin_user_assigned_role",
-        "_toEntityKey": "onelogin_role_252336"
-      }
-    ],
-    "userPersonalAppRelationships": [
-      {
-        "_class": "HAS",
-        "_fromEntityKey": "onelogin_user_50504993",
-        "_key": "onelogin_user_50504993_has_onelogin_personal_application_11111",
-        "_toEntityKey": "onelogin_personal_application_11111",
-        "_type": "onelogin_user_has_onelogin_personal_application"
-      },
-      {
-        "_class": "HAS",
-        "_fromEntityKey": "onelogin_user_50505384",
-        "_key": "onelogin_user_50505384_has_onelogin_personal_application_2222222",
-        "_toEntityKey": "onelogin_personal_application_2222222",
-        "_type": "onelogin_user_has_onelogin_personal_application"
+        "_toEntityKey": "onelogin_role_252336",
+        "_type": "onelogin_user_assigned_role"
       }
     ]
   }

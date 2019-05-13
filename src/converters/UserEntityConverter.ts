@@ -2,6 +2,7 @@ import { USER_ENTITY_CLASS, USER_ENTITY_TYPE, UserEntity } from "../jupiterone";
 import { User } from "../onelogin/OneLoginClient";
 
 import generateKey from "../utils/generateKey";
+import getTime from "../utils/getTime";
 
 export function createUserEntities(data: User[]): UserEntity[] {
   return data.map(user => {
@@ -11,25 +12,25 @@ export function createUserEntities(data: User[]): UserEntity[] {
       _class: USER_ENTITY_CLASS,
       id: user.id,
       displayName: `${user.firstname} ${user.lastname}`,
-      activatedAt: user.activated_at,
-      createdAt: user.created_at,
+      activatedAt: getTime(user.activated_at),
+      createdAt: getTime(user.created_at)!,
       email: user.email,
       username: user.username || "",
       firstname: user.firstname,
       groupId: user.group_id || 0,
       invalidLoginAttempts: user.invalid_login_attempts,
-      invitationSentAt: user.invitation_sent_at,
-      lastLogin: user.last_login,
+      invitationSentAt: getTime(user.invitation_sent_at),
+      lastLogin: getTime(user.last_login),
       lastname: user.lastname,
       lockedUntil: user.locked_until,
       comment: user.comment || "",
       openidName: user.openid_name || "",
       localeCode: user.locale_code,
       preferredLocaleCode: user.preferred_locale_code,
-      passwordChangedAt: user.password_changed_at,
+      passwordChangedAt: getTime(user.password_changed_at),
       phone: user.phone,
       status: user.status,
-      updatedAt: user.updated_at,
+      updatedAt: getTime(user.updated_at)!,
       distinguishedName: user.distinguished_name,
       externalId: user.external_id,
       directoryId: user.directory_id,
