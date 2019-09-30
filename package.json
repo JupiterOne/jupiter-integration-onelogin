@@ -1,5 +1,5 @@
 {
-  "name": "@jupiterone/jupiter-integration-onelogin",
+  "name": "@jupiterone/graph-onelogin",
   "version": "1.0.3",
   "description": "A JupiterOne managed integration for https://www.onelogin.com",
   "main": "dist/index.js",
