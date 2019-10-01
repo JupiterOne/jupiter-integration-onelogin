@@ -2,9 +2,9 @@ version: '3.7'
 
 services:
   integration:
-    image: jupiter-integration-onelogin-app
+    image: graph-onelogin-app
     build: .
-    container_name: jupiter-integration-onelogin-app
+    container_name: graph-onelogin-app
     volumes:
       - .:/app:cached
       - ~/.ssh:/root/.ssh
