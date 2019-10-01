@@ -1,9 +1,9 @@
 {
-  "name": "@jupiterone/jupiter-integration-onelogin",
+  "name": "@jupiterone/graph-onelogin",
   "version": "1.0.3",
   "description": "A JupiterOne managed integration for https://www.onelogin.com",
   "main": "dist/index.js",
-  "repository": "https://github.com/jupiterone-io/jupiter-integration-onelogin",
+  "repository": "https://github.com/jupiterone-io/graph-onelogin",
   "license": "SEE LICENSE IN LICENSE",
   "files": [
     "LICENSE",
