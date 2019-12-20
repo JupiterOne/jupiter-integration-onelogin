@@ -15,6 +15,7 @@ export default async function initializeContext(
   const account = {
     id: context.instance.id,
     name: context.instance.config.accountName || context.instance.name,
+    orgUrl: context.instance.config.orgUrl,
   };
 
   return {
