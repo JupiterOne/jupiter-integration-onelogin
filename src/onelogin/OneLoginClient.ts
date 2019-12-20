@@ -28,6 +28,7 @@ interface AccessToken {
 export interface Account {
   id: string;
   name: string;
+  orgUrl: string | undefined;
 }
 
 export interface User {
