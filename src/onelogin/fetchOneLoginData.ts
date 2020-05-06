@@ -21,5 +21,12 @@ export default async function fetchOneLoginData(
     personalDevices[users[i].id] = await client.fetchUserDevices(users[i].id);
   }
 
-  return { users, groups, roles, apps, personalApps, personalDevices };
+  return {
+    users,
+    groups,
+    roles,
+    apps,
+    personalApps,
+    personalDevices,
+  } as OneLoginDataModel;
 }

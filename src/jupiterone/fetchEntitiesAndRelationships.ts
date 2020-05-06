@@ -86,7 +86,7 @@ async function fetchEntities(
     personalApps,
     devices,
     services,
-  };
+  } as JupiterOneEntitiesData;
 }
 
 export async function fetchRelationships(
