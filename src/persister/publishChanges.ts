@@ -74,10 +74,10 @@ function createEntitiesOperations(
 
     return [
       ...operations,
-      ...persister.processEntities<EntityFromIntegration>(
+      ...persister.processEntities<EntityFromIntegration>({
         oldEntities,
         newEntities,
-      ),
+      }),
     ];
   }, defatultOperations);
 }
@@ -93,12 +93,12 @@ function createRelationshipsOperations(
   ) as RelationshipsKeys[];
 
   return relationships.reduce((operations, relationshipName) => {
-    const oldRelationhips = oldData[relationshipName];
-    const newRelationhips = newData[relationshipName];
+    const oldRelationships = oldData[relationshipName];
+    const newRelationships = newData[relationshipName];
 
     return [
       ...operations,
-      ...persister.processRelationships(oldRelationhips, newRelationhips),
+      ...persister.processRelationships({ oldRelationships, newRelationships }),
     ];
   }, defatultOperations);
 }

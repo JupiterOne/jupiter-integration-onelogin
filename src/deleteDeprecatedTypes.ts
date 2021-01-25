@@ -33,7 +33,13 @@ export default async function deleteDeprecatedTypes(
   }
 
   return persister.publishPersisterOperations([
-    persister.processEntities(deprecatedEntities, []),
-    persister.processRelationships(deprecatedRelationships, []),
+    persister.processEntities({
+      oldEntities: deprecatedEntities,
+      newEntities: [],
+    }),
+    persister.processRelationships({
+      oldRelationships: deprecatedRelationships,
+      newRelationships: [],
+    }),
   ]);
 }
