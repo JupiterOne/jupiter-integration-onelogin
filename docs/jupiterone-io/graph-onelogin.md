@@ -2,21 +2,26 @@
 
 ## OneLogin + JupiterOne Integration Benefits
 
-- Visualize OneLogin users, groups, roles, devices, applications, and services in the JupiterOne graph.
+- Visualize OneLogin users, groups, roles, devices, applications, 
+and services in the JupiterOne graph.
 - Map OneLogin users to employees in your JupiterOne account.
-- Monitor changes to OneLogin users and access management data using JupiterOne alerts.
-- Create an employee entity that is used to map users across your organization to an employee 
+- Monitor changes to OneLogin users and access management data using 
+JupiterOne alerts.
+- Create an employee entity that is used to map users across your 
+organization to an employee 
 via a matching email property.
 
 ## How it Works
 
-- JupiterOne periodically fetches OneLogin users, groups, and access management data to update the graph.
+- JupiterOne periodically fetches OneLogin users, groups, and access 
+management data to update the graph.
 - Write JupiterOne queries to review and monitor updates to the graph.
 - Configure alerts to take action when the JupiterOne graph changes.
 
 ## Requirements
 
-- JupiterOne requires the API client id and API client secret used to authenticate with OneLogin.
+- JupiterOne requires the API client id and API client secret used to 
+authenticate with OneLogin.
 - You must have permission in JupiterOne to install new integrations.
 
 ## Support
