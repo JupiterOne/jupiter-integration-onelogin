@@ -24,15 +24,21 @@ import { OneLoginClient } from "./onelogin";
 export default async function invocationValidator(
   context: IntegrationValidationContext,
 ) {
-  const { config } = context.instance;
+  const { instance, logger } = context;
+  const { config } = instance;
   if (!config.clientId || !config.clientSecret) {
     throw new IntegrationInstanceConfigError(
       "config requires all of { clientId, clientSecret }",
     );
   }
 
-  const provider = new OneLoginClient(config.clientId, config.clientSecret);
+  const provider = new OneLoginClient(
+    config.clientId,
+    config.clientSecret,
+    logger,
+  );
 
+  logger.info("Validating OneLoginClient with provided credentials");
   try {
     await provider.authenticate();
   } catch (err) {
