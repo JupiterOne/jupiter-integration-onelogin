@@ -5,11 +5,18 @@ import { OneLoginClient } from "./onelogin";
 export default async function initializeContext(
   context: IntegrationExecutionContext,
 ) {
-  const { config } = context.instance;
+  const { instance, logger } = context;
+  const { config } = instance;
 
-  const provider = new OneLoginClient(config.clientId, config.clientSecret);
+  logger.info("Initializing OneLoginClient");
+  const provider = new OneLoginClient(
+    config.clientId,
+    config.clientSecret,
+    logger,
+  );
   await provider.authenticate();
 
+  logger.info("Initializing persister and graph clients");
   const { persister, graph } = context.clients.getClients();
 
   const account = {

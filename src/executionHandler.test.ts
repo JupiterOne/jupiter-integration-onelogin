@@ -1,4 +1,5 @@
 import { IntegrationExecutionContext } from "@jupiterone/jupiter-managed-integration-sdk";
+import { createMockIntegrationLogger } from "../test/logger";
 import executionHandler from "./executionHandler";
 import initializeContext from "./initializeContext";
 
@@ -86,6 +87,7 @@ test("executionHandler", async () => {
       id: "id",
       name: "name",
     },
+    logger: createMockIntegrationLogger(),
   } as IntegrationExecutionContext;
   await executionHandler(invocationContext);
 

@@ -1,6 +1,7 @@
 import {
   EntityFromIntegration,
   EntityOperation,
+  IntegrationLogger,
   PersisterClient,
   RelationshipOperation,
 } from "@jupiterone/jupiter-managed-integration-sdk";
@@ -43,20 +44,25 @@ export default async function publishChanges(
   oldData: JupiterOneDataModel,
   oneLoginData: OneLoginDataModel,
   account: Account,
+  logger: IntegrationLogger,
 ) {
+  logger.info("Converting OneLogin data to JupiterOne entities/relationships.");
   const newData = convert(oneLoginData, account);
 
+  logger.info("Creating entity create/update/delete operations");
   const entities = createEntitiesOperations(
     oldData.entities,
     newData.entities,
     persister,
   );
+  logger.info("Creating relationship create/update/delete operations");
   const relationships = createRelationshipsOperations(
     oldData.relationships,
     newData.relationships,
     persister,
   );
 
+  logger.info("Publishing create/update/delete operations");
   return await persister.publishPersisterOperations([entities, relationships]);
 }
 

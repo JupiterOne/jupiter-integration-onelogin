@@ -1,3 +1,4 @@
+import { IntegrationLogger } from "@jupiterone/jupiter-managed-integration-sdk";
 import fetch, { RequestInit } from "node-fetch";
 
 interface OneloginResponse {
@@ -164,14 +165,13 @@ enum Method {
 
 export default class OneLoginClient {
   private host: string = "https://api.us.onelogin.com";
-  private clientId: string;
-  private clientSecret: string;
   private accessToken: string;
 
-  constructor(clientId: string, clientSecret: string) {
-    this.clientId = clientId;
-    this.clientSecret = clientSecret;
-  }
+  constructor(
+    private clientId: string,
+    private clientSecret: string,
+    private readonly logger: IntegrationLogger,
+  ) {}
 
   public async authenticate() {
     const result = (await this.makeRequest(
@@ -212,6 +212,13 @@ export default class OneLoginClient {
       if (result.data) {
         users = [...users, ...result.data];
         afterCursor = result.pagination.after_cursor;
+        this.logger.info(
+          {
+            pageSize: result.data.length,
+            afterCursor: result.pagination.after_cursor,
+          },
+          "Fetched page of OneLogin users",
+        );
       }
     } while (afterCursor);
 
@@ -233,6 +240,13 @@ export default class OneLoginClient {
       if (result.data) {
         groups = [...groups, ...result.data];
         afterCursor = result.pagination.after_cursor;
+        this.logger.info(
+          {
+            pageSize: result.data.length,
+            afterCursor: result.pagination.after_cursor,
+          },
+          "Fetched page of OneLogin groups",
+        );
       }
     } while (afterCursor);
 
@@ -254,6 +268,13 @@ export default class OneLoginClient {
       if (result.data) {
         roles = [...roles, ...result.data];
         afterCursor = result.pagination.after_cursor;
+        this.logger.info(
+          {
+            pageSize: result.data.length,
+            afterCursor: result.pagination.after_cursor,
+          },
+          "Fetched page of OneLogin roles",
+        );
       }
     } while (afterCursor);
 
@@ -275,6 +296,13 @@ export default class OneLoginClient {
       if (result.data) {
         apps = [...apps, ...result.data];
         afterCursor = result.pagination.after_cursor;
+        this.logger.info(
+          {
+            pageSize: result.data.length,
+            afterCursor: result.pagination.after_cursor,
+          },
+          "Fetched page of OneLogin apps",
+        );
       }
     } while (afterCursor);
 
@@ -291,6 +319,14 @@ export default class OneLoginClient {
 
     const apps: PersonalApp[] = result.data;
 
+    this.logger.info(
+      {
+        size: result.data.length,
+        userId,
+      },
+      "Fetched OneLogin apps for user",
+    );
+
     return apps;
   }
 
@@ -303,6 +339,14 @@ export default class OneLoginClient {
     )) as PersonalDeviceResponse;
 
     const devices: PersonalDevice[] = result.data.otp_devices;
+
+    this.logger.info(
+      {
+        size: result.data.otp_devices,
+        userId,
+      },
+      "Fetched OneLogin devices for user",
+    );
 
     return devices;
   }

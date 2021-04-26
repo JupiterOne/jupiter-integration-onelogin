@@ -2,6 +2,7 @@ import {
   IntegrationInstanceAuthenticationError,
   IntegrationInstanceConfigError,
 } from "@jupiterone/jupiter-managed-integration-sdk";
+import { createMockIntegrationLogger } from "../test/logger";
 import invocationValidator from "./invocationValidator";
 
 it("should reject", async () => {
@@ -25,6 +26,7 @@ it("auth error", async () => {
         clientSecret: "YYY",
       },
     },
+    logger: createMockIntegrationLogger(),
   };
   try {
     await invocationValidator(executionContext as any);

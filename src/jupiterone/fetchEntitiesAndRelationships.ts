@@ -1,5 +1,6 @@
 import {
   GraphClient,
+  IntegrationLogger,
   RelationshipFromIntegration,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 import * as Entities from "./entities";
@@ -37,10 +38,11 @@ export interface JupiterOneDataModel {
 
 export default async function fetchEntitiesAndRelationships(
   graph: GraphClient,
+  logger: IntegrationLogger,
 ): Promise<JupiterOneDataModel> {
   const data: JupiterOneDataModel = {
-    entities: await fetchEntities(graph),
-    relationships: await fetchRelationships(graph),
+    entities: await fetchEntities(graph, logger),
+    relationships: await fetchRelationships(graph, logger),
   };
 
   return data;
@@ -48,7 +50,9 @@ export default async function fetchEntitiesAndRelationships(
 
 async function fetchEntities(
   graph: GraphClient,
+  logger: IntegrationLogger,
 ): Promise<JupiterOneEntitiesData> {
+  logger.info("Fetching existing entities from JupiterOne");
   const [
     accounts,
     users,
@@ -91,7 +95,9 @@ async function fetchEntities(
 
 export async function fetchRelationships(
   graph: GraphClient,
+  logger: IntegrationLogger,
 ): Promise<JupiterOneRelationshipsData> {
+  logger.info("Fetching existing relationships in JupiterOne");
   const [
     userGroupRelationships,
     userRoleRelationships,
