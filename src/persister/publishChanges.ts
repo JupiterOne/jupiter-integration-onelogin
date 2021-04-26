@@ -46,7 +46,7 @@ export default async function publishChanges(
   account: Account,
   logger: IntegrationLogger,
 ) {
-  logger.info("Conveting OneLogin data to JupiterOne entitites/relationships.");
+  logger.info("Converting OneLogin data to JupiterOne entities/relationships.");
   const newData = convert(oneLoginData, account);
 
   logger.info("Creating entity create/update/delete operations");
