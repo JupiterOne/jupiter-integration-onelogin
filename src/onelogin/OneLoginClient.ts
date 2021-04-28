@@ -231,7 +231,7 @@ export default class OneLoginClient {
 
     do {
       const result = (await this.makeRequest(
-        "/api/1/groups",
+        `/api/1/groups?after_cursor=${afterCursor}`,
         Method.GET,
         {},
         { Authorization: `bearer:${this.accessToken}` },
@@ -259,7 +259,7 @@ export default class OneLoginClient {
 
     do {
       const result = (await this.makeRequest(
-        "/api/1/roles",
+        `/api/1/roles?after_cursor=${afterCursor}`,
         Method.GET,
         {},
         { Authorization: `bearer:${this.accessToken}` },
@@ -287,7 +287,7 @@ export default class OneLoginClient {
 
     do {
       const result = (await this.makeRequest(
-        "/api/1/apps",
+        `/api/1/apps?after_cursor=${afterCursor}`,
         Method.GET,
         {},
         { Authorization: `bearer:${this.accessToken}` },
