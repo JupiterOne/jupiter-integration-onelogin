@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed client pagination on `/groups`, `/roles`, and `/apps` endpoints.
+
 ## 1.0.10
 
 ### Added
