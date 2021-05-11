@@ -67,6 +67,9 @@ export interface User {
   title: string | null;
   state: number;
   trusted_idp_id: number | null;
+  custom_attributes?: {
+    [k: string]: string | null;
+  };
 }
 
 export interface Group {
