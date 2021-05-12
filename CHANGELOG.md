@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## 1.1.0 - 2021-05-12
+
 ### Added
 
 - Added `onelogin_user.custom_attributes.*` to ingest any/all defined custom
