@@ -9,7 +9,7 @@ export function createUserEntities(data: User[]): UserEntity[] {
   return data.map(user => createUserEntity(user));
 }
 
-function createUserEntity(user: User): UserEntity {
+export function createUserEntity(user: User): UserEntity {
   return {
     _key: generateKey(USER_ENTITY_TYPE, user.id),
     _type: USER_ENTITY_TYPE,
@@ -53,5 +53,3 @@ function createUserEntity(user: User): UserEntity {
     }),
   };
 }
-
-export const testFunctions = { createUserEntity };

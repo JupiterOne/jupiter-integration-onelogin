@@ -1,6 +1,5 @@
 import { User } from "../onelogin/OneLoginClient";
-import { testFunctions } from "./UserEntityConverter";
-const { createUserEntity } = testFunctions;
+import { createUserEntity } from "./UserEntityConverter";
 
 const baseUser: User = {
   created_at: new Date().toString(),
