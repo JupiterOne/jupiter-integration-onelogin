@@ -11,3 +11,9 @@ export interface OneLoginExecutionContext extends IntegrationExecutionContext {
   persister: PersisterClient;
   provider: OneLoginClien;
 }
+
+export interface IntegrationConfig {
+  orgUrl: string;
+  clientId: string;
+  clientSecret: string;
+}
