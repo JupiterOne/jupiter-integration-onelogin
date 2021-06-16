@@ -1,17 +1,16 @@
 import {
   PersonalDevice,
   PersonalDevicesDict,
-} from "../onelogin/OneLoginClient";
+} from '../onelogin/OneLoginClient';
 
 import {
   PERSONAL_DEVICE_ENTITY_TYPE,
   USER_ENTITY_TYPE,
   USER_PERSONAL_DEVICE_RELATIONSHIP_CLASS,
   USER_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
-  UserPersonalDeviceRelationship,
-} from "../jupiterone";
+} from '../jupiterone';
 
-import generateKey from "../utils/generateKey";
+import generateKey from '../utils/generateKey';
 
 export function createUserPersonalDeviceRelationships(
   personalDevices: PersonalDevicesDict,
@@ -38,7 +37,7 @@ export function createUserPersonalDeviceRelationships(
             _key: `${parentKey}_assigned_${childKey}`,
             _type: USER_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
             _toEntityKey: childKey,
-            displayName: "ASSIGNED",
+            displayName: 'ASSIGNED',
           };
 
           return [...userDevicesAcc, relationship];

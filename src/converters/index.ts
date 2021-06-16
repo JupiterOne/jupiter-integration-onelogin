@@ -1,18 +1,12 @@
 export { createAccountEntity } from './AccountEntityConverter';
-export { createAppEntities } from './AppEntityConverter';
+export { createAppEntity } from './AppEntityConverter';
 export { createPersonalAppEntities } from './PersonalAppEntityConverter';
 export { createUserEntity } from './UserEntityConverter';
-export { createGroupEntities } from './GroupEntityConverter';
-export { createRoleEntities } from './RoleEntityConverter';
+export { createGroupEntity } from './GroupEntityConverter';
+export { createRoleEntity } from './RoleEntityConverter';
 
-export { createUserAppRelationships } from './UserAppRelationshipConverter';
 export { createUserPersonalAppRelationships } from './UserPersonalAppRelationshipConverter';
-export { createUserGroupRelationships } from './UserGroupRelationshipConverter';
 export { createUserRoleRelationships } from './UserRoleRelationshipConverter';
-export { createAccountAppRelationships } from './AccountAppRelationshipConverter';
-export { createAccountUserRelationships } from './AccountUserRelationshipConverter';
-export { createAccountGroupRelationships } from './AccountGroupRelationshipConverter';
-export { createAccountRoleRelationships } from './AccountRoleRelationshipConverter';
 export { createAccountPersonalDeviceRelationships } from './AccountPersonalDeviceRelationshipConverter';
 export { createPersonalDeviceEntities } from './PersonalDeviceEntityConverter';
 export { createUserPersonalDeviceRelationships } from './UserPersonalDeviceRelationshipConverter';

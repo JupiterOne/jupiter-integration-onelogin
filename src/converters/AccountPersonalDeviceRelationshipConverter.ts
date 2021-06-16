@@ -1,16 +1,15 @@
 import {
   ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_CLASS,
   ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
-  AccountPersonalDeviceRelationship,
   PERSONAL_DEVICE_ENTITY_TYPE,
-} from "../jupiterone";
-import { PersonalDevicesDict } from "../onelogin/OneLoginClient";
+} from '../jupiterone';
+import { PersonalDevicesDict } from '../onelogin/OneLoginClient';
 
-import { ACCOUNT_ENTITY_TYPE } from "../jupiterone";
+import { ACCOUNT_ENTITY_TYPE } from '../jupiterone';
 
-import { Account } from "../onelogin/OneLoginClient";
+import { Account } from '../onelogin/OneLoginClient';
 
-import generateKey from "../utils/generateKey";
+import generateKey from '../utils/generateKey';
 
 export function createAccountPersonalDeviceRelationships(
   personalDevices: PersonalDevicesDict,
@@ -32,7 +31,7 @@ export function createAccountPersonalDeviceRelationships(
           _key: `${parentKey}_has_${childKey}`,
           _type: ACCOUNT_PERSONAL_DEVICE_RELATIONSHIP_TYPE,
           _toEntityKey: childKey,
-          displayName: "HAS",
+          displayName: 'HAS',
         };
 
         acc.push(relationship);

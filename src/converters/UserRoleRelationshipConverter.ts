@@ -1,14 +1,13 @@
-import { Role, User } from "../onelogin/OneLoginClient";
+import { Role, User } from '../onelogin/OneLoginClient';
 
 import {
   ROLE_ENTITY_TYPE,
   USER_ENTITY_TYPE,
   USER_ROLE_RELATIONSHIP_CLASS,
   USER_ROLE_RELATIONSHIP_TYPE,
-  UserRoleRelationship,
-} from "../jupiterone";
+} from '../jupiterone';
 
-import generateKey from "../utils/generateKey";
+import generateKey from '../utils/generateKey';
 
 interface RolesDict {
   [id: number]: Role;

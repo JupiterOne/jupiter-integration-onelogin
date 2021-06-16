@@ -118,6 +118,7 @@ The following entities are created:
 
 | Resources        | Entity `_type`     | Entity `_class` |
 | ---------------- | ------------------ | --------------- |
+| Group            | `onelogin_group`   | `UserGroup`     |
 | Onelogin Account | `onelogin_account` | `Account`       |
 | User             | `onelogin_user`    | `User`          |
 
@@ -127,7 +128,10 @@ The following relationships are created/mapped:
 
 | Source Entity `_type` | Relationship `_class` | Target Entity `_type` |
 | --------------------- | --------------------- | --------------------- |
+| `onelogin_account`    | **HAS**               | `onelogin_group`      |
 | `onelogin_account`    | **HAS**               | `onelogin_user`       |
+| `onelogin_group`      | **HAS**               | `onelogin_user`       |
+| `onelogin_user`       | **ASSIGNED**          | `onelogin_group`      |
 
 <!--
 ********************************************************************************

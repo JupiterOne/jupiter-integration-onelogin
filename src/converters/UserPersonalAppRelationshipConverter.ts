@@ -1,14 +1,13 @@
-import { PersonalApp, PersonalAppsDict } from "../onelogin/OneLoginClient";
+import { PersonalApp, PersonalAppsDict } from '../onelogin/OneLoginClient';
 
 import {
   PERSONAL_APP_ENTITY_TYPE,
   USER_ENTITY_TYPE,
   USER_PERSONAL_APP_RELATIONSHIP_CLASS,
   USER_PERSONAL_APP_RELATIONSHIP_TYPE,
-  UserRoleRelationship,
-} from "../jupiterone";
+} from '../jupiterone';
 
-import generateKey from "../utils/generateKey";
+import generateKey from '../utils/generateKey';
 
 export function createUserPersonalAppRelationships(
   personalApps: PersonalAppsDict,
