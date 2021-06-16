@@ -49,7 +49,7 @@ export interface IntegrationConfig extends IntegrationInstanceConfig {
   clientSecret: string;
 
   /**
-   * The Onelogin domain used to authenticate requests.
+   * The Onelogin organization URL. Only used to create a weblink to the account.
    */
   orgUrl: string;
 }
@@ -59,9 +59,9 @@ export async function validateInvocation(
 ) {
   const { config } = context.instance;
 
-  if (!config.clientId || !config.clientSecret || !config.orgUrl) {
+  if (!config.clientId || !config.clientSecret) {
     throw new IntegrationValidationError(
-      'Config requires all of {clientId, clientSecret, orgUrl}',
+      'Config requires all of {clientId, clientSecret}',
     );
   }
 

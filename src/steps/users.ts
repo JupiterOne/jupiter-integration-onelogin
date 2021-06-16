@@ -14,19 +14,14 @@ import { DATA_ACCOUNT_ENTITY } from './account';
 export async function fetchUsers({
   instance,
   jobState,
+  logger,
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
-  const apiClient = createAPIClient(instance.config);
+  const apiClient = createAPIClient(instance.config, logger);
 
   const accountEntity = (await jobState.getData(DATA_ACCOUNT_ENTITY)) as Entity;
 
   await apiClient.iterateUsers(async (user) => {
-    //unspecified content fields to delete for safety
-    delete user.user_metadata;
-    delete user.app_metadata;
-
-    const userEntity = await jobState.addEntity(
-      createUserEntity(user, accountEntity.webLink!),
-    );
+    const userEntity = await jobState.addEntity(createUserEntity(user));
 
     await jobState.addRelationship(
       createDirectRelationship({
@@ -45,16 +40,16 @@ export const userSteps: IntegrationStep<IntegrationConfig>[] = [
     entities: [
       {
         resourceName: 'User',
-        _type: 'auth0_user',
+        _type: 'onelogin_user',
         _class: 'User',
       },
     ],
     relationships: [
       {
-        _type: 'auth0_account_has_user',
+        _type: 'onelogin_account_has_user',
         _class: RelationshipClass.HAS,
-        sourceType: 'auth0_account',
-        targetType: 'auth0_user',
+        sourceType: 'onelogin_account',
+        targetType: 'onelogin_user',
       },
     ],
     dependsOn: ['fetch-account'],

@@ -213,14 +213,13 @@ export default class OneLoginClient {
       if (result.data) {
         users = [...users, ...result.data];
         afterCursor = result.pagination.after_cursor;
-        /*
         this.logger.info(
           {
             pageSize: result.data.length,
             afterCursor: result.pagination.after_cursor,
           },
-          "Fetched page of OneLogin users",
-        );*/
+          'Fetched page of OneLogin users',
+        );
       }
     } while (afterCursor);
 

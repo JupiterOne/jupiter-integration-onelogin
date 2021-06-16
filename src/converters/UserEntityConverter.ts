@@ -7,10 +7,6 @@ import { User } from '../onelogin/OneLoginClient';
 
 import generateKey from '../utils/generateKey';
 
-export function createUserEntities(data: User[]): UserEntity[] {
-  return data.map((user) => createUserEntity(user));
-}
-
 export function createUserEntity(user: User): UserEntity {
   return {
     _key: generateKey(USER_ENTITY_TYPE, user.id),

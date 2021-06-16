@@ -1,40 +1,26 @@
 import {
-  createIntegrationEntity,
   IntegrationStep,
   IntegrationStepExecutionContext,
 } from '@jupiterone/integration-sdk-core';
 
 import { IntegrationConfig } from '../config';
+import { createAccountEntity } from '../converters';
+import { ACCOUNT_ENTITY_TYPE, ACCOUNT_ENTITY_CLASS } from '../jupiterone';
 
 export const DATA_ACCOUNT_ENTITY = 'DATA_ACCOUNT_ENTITY';
-export const ACCOUNT_ENTITY_TYPE = 'onelogin_account';
 
 export async function fetchAccountDetails({
   instance,
   jobState,
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
-  /*
-  const webLink = getAcctWeblink(instance.config.domain);
-  const accountEntity = await jobState.addEntity(
-    createIntegrationEntity({
-      entityData: {
-        source: {
-          id: `Auth0 Account`,
-          name: 'Auth0 Account',
-        },
-        assign: {
-          _key: `auth0-account:${instance.id}`,
-          _type: ACCOUNT_ENTITY_TYPE,
-          _class: 'Account',
-          name: 'Auth0 Account',
-          displayName: 'Auth0 Account',
-          webLink: webLink,
-        },
-      },
-    }),
-  );
+  const account = {
+    id: instance.id,
+    name: instance.config.accountName || instance.name,
+    orgUrl: instance.config.orgUrl,
+  };
+  const accountEntity = await jobState.addEntity(createAccountEntity(account));
 
-  await jobState.setData(DATA_ACCOUNT_ENTITY, accountEntity);*/
+  await jobState.setData(DATA_ACCOUNT_ENTITY, accountEntity);
 }
 
 export const accountSteps: IntegrationStep<IntegrationConfig>[] = [
@@ -45,7 +31,7 @@ export const accountSteps: IntegrationStep<IntegrationConfig>[] = [
       {
         resourceName: 'Onelogin Account',
         _type: ACCOUNT_ENTITY_TYPE,
-        _class: 'Account',
+        _class: [ACCOUNT_ENTITY_CLASS],
       },
     ],
     relationships: [],

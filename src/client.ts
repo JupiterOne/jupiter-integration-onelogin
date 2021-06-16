@@ -6,8 +6,7 @@ import {
 } from '@jupiterone/integration-sdk-core';
 
 import { IntegrationConfig } from './config';
-import { UserEntity } from './jupiterone/entities/UserEntity';
-import { OneLoginClient } from './onelogin';
+import { OneLoginClient, User } from './onelogin';
 
 export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
 
@@ -50,9 +49,7 @@ export class APIClient {
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
-  public async iterateUsers(
-    iteratee: ResourceIteratee<UserEntity>,
-  ): Promise<void> {
+  public async iterateUsers(iteratee: ResourceIteratee<User>): Promise<void> {
     await this.provider.authenticate();
     const users = await this.provider.fetchUsers();
     for (const user of users) {
