@@ -2,13 +2,13 @@ import {
   PERSONAL_DEVICE_ENTITY_CLASS,
   PERSONAL_DEVICE_ENTITY_TYPE,
   PersonalDeviceEntity,
-} from "../jupiterone";
+} from '../jupiterone';
 import {
   PersonalDevice,
   PersonalDevicesDict,
-} from "../onelogin/OneLoginClient";
+} from '../onelogin/OneLoginClient';
 
-import generateKey from "../utils/generateKey";
+import generateKey from '../utils/generateKey';
 
 export function createPersonalDeviceEntities(
   personalDevicesDict: PersonalDevicesDict,
@@ -28,7 +28,7 @@ export function createPersonalDeviceEntities(
             _key: generateKey(PERSONAL_DEVICE_ENTITY_TYPE, device.id),
             _type: PERSONAL_DEVICE_ENTITY_TYPE,
             displayName: device.type_display_name,
-            id: device.id,
+            id: String(device.id),
             default: device.default,
             active: device.active,
             authFactorName: device.auth_factor_name,

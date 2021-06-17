@@ -45,7 +45,7 @@ export class APIClient {
   }
 
   /**
-   * Iterates each Onelogin group resource.
+   * Iterates each Onelogin Group resource.
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
@@ -58,7 +58,7 @@ export class APIClient {
   }
 
   /**
-   * Iterates each Onelogin group resource.
+   * Iterates each Onelogin Role resource.
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
@@ -71,7 +71,7 @@ export class APIClient {
   }
 
   /**
-   * Iterates each Onelogin user resource.
+   * Iterates each Onelogin User resource.
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
@@ -80,6 +80,25 @@ export class APIClient {
     const users = await this.provider.fetchUsers();
     for (const user of users) {
       await iteratee(user);
+    }
+  }
+
+  /**
+   * Iterates each Onelogin Application resource.
+   * These are the organization-wide apps (though not necessarily for every user).
+   * There are also "personal apps" which will be visible elsewhere.
+   *
+   * @param iteratee receives each resource to produce entities/relationships
+   */
+  public async iterateApplications(
+    iteratee: ResourceIteratee<App>,
+  ): Promise<void> {
+    await this.provider.authenticate();
+    console.log('here are apps::');
+    const applications = await this.provider.fetchApps();
+    for (const application of applications) {
+      console.log(application);
+      await iteratee(application);
     }
   }
 }
