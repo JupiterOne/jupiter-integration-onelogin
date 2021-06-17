@@ -45,7 +45,7 @@ export class APIClient {
   }
 
   /**
-   * Iterates each Onelogin user resource.
+   * Iterates each Onelogin group resource.
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
@@ -53,8 +53,20 @@ export class APIClient {
     await this.provider.authenticate();
     const groups = await this.provider.fetchGroups();
     for (const group of groups) {
-      console.log(group);
       await iteratee(group);
+    }
+  }
+
+  /**
+   * Iterates each Onelogin group resource.
+   *
+   * @param iteratee receives each resource to produce entities/relationships
+   */
+  public async iterateRoles(iteratee: ResourceIteratee<Role>): Promise<void> {
+    await this.provider.authenticate();
+    const roles = await this.provider.fetchRoles();
+    for (const role of roles) {
+      await iteratee(role);
     }
   }
 
@@ -67,7 +79,6 @@ export class APIClient {
     await this.provider.authenticate();
     const users = await this.provider.fetchUsers();
     for (const user of users) {
-      console.log(user);
       await iteratee(user);
     }
   }

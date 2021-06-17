@@ -52,6 +52,11 @@ export interface IntegrationConfig extends IntegrationInstanceConfig {
    * The Onelogin organization URL. Only used to create a weblink to the account.
    */
   orgUrl: string;
+
+  /**
+   * The Onelogin account name. Optional. Used to create name of account entity in J1 graph.
+   */
+  accountName?: string;
 }
 
 export async function validateInvocation(
