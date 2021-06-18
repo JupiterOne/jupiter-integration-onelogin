@@ -62,7 +62,7 @@ export const applicationSteps: IntegrationStep<IntegrationConfig>[] = [
     name: 'Fetch Applications',
     entities: [
       {
-        resourceName: 'Application',
+        resourceName: 'Onelogin Application',
         _type: APP_ENTITY_TYPE,
         _class: APP_ENTITY_CLASS,
       },

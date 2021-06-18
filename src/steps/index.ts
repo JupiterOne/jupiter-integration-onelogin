@@ -2,6 +2,7 @@ import { accountSteps } from './account';
 import { applicationSteps } from './applications';
 import { groupSteps } from './groups';
 import { roleSteps } from './roles';
+import { userAppSteps } from './userapps';
 import { userSteps } from './users';
 
 const integrationSteps = [
@@ -10,6 +11,7 @@ const integrationSteps = [
   ...roleSteps,
   ...userSteps,
   ...applicationSteps,
+  ...userAppSteps,
 ];
 
 export { integrationSteps };

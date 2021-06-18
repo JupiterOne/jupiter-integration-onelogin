@@ -62,7 +62,7 @@ export const groupSteps: IntegrationStep<IntegrationConfig>[] = [
     name: 'Fetch Groups',
     entities: [
       {
-        resourceName: 'Group',
+        resourceName: 'Onelogin Group',
         _type: GROUP_ENTITY_TYPE,
         _class: GROUP_ENTITY_CLASS,
       },

@@ -62,7 +62,7 @@ export const roleSteps: IntegrationStep<IntegrationConfig>[] = [
     name: 'Fetch Roles',
     entities: [
       {
-        resourceName: 'Role',
+        resourceName: 'Onelogin Role',
         _type: ROLE_ENTITY_TYPE,
         _class: ROLE_ENTITY_CLASS,
       },

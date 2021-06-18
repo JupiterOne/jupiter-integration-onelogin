@@ -125,7 +125,7 @@ export const userSteps: IntegrationStep<IntegrationConfig>[] = [
     name: 'Fetch Users',
     entities: [
       {
-        resourceName: 'User',
+        resourceName: 'Onelogin User',
         _type: USER_ENTITY_TYPE,
         _class: USER_ENTITY_CLASS,
       },

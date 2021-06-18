@@ -116,29 +116,32 @@ https://github.com/JupiterOne/sdk/blob/master/docs/integrations/development.md
 
 The following entities are created:
 
-| Resources        | Entity `_type`         | Entity `_class`      |
-| ---------------- | ---------------------- | -------------------- |
-| Application      | `onelogin_application` | `Application`        |
-| Group            | `onelogin_group`       | `UserGroup`          |
-| Onelogin Account | `onelogin_account`     | `Account`            |
-| Onelogin Service | `onelogin_service`     | `Service`, `Control` |
-| Role             | `onelogin_role`        | `AccessRole`         |
-| User             | `onelogin_user`        | `User`               |
+| Resources                     | Entity `_type`                  | Entity `_class`      |
+| ----------------------------- | ------------------------------- | -------------------- |
+| Onelogin Account              | `onelogin_account`              | `Account`            |
+| Onelogin Application          | `onelogin_application`          | `Application`        |
+| Onelogin Group                | `onelogin_group`                | `UserGroup`          |
+| Onelogin Personal Application | `onelogin_personal_application` | `Application`        |
+| Onelogin Role                 | `onelogin_role`                 | `AccessRole`         |
+| Onelogin Service              | `onelogin_service`              | `Service`, `Control` |
+| Onelogin User                 | `onelogin_user`                 | `User`               |
 
 ### Relationships
 
 The following relationships are created/mapped:
 
-| Source Entity `_type` | Relationship `_class` | Target Entity `_type`  |
-| --------------------- | --------------------- | ---------------------- |
-| `onelogin_account`    | **HAS**               | `onelogin_application` |
-| `onelogin_account`    | **HAS**               | `onelogin_group`       |
-| `onelogin_account`    | **HAS**               | `onelogin_role`        |
-| `onelogin_account`    | **HAS**               | `onelogin_service`     |
-| `onelogin_account`    | **HAS**               | `onelogin_user`        |
-| `onelogin_group`      | **HAS**               | `onelogin_user`        |
-| `onelogin_user`       | **ASSIGNED**          | `onelogin_group`       |
-| `onelogin_user`       | **ASSIGNED**          | `onelogin_role`        |
+| Source Entity `_type` | Relationship `_class` | Target Entity `_type`           |
+| --------------------- | --------------------- | ------------------------------- |
+| `onelogin_account`    | **HAS**               | `onelogin_application`          |
+| `onelogin_account`    | **HAS**               | `onelogin_group`                |
+| `onelogin_account`    | **HAS**               | `onelogin_role`                 |
+| `onelogin_account`    | **HAS**               | `onelogin_service`              |
+| `onelogin_account`    | **HAS**               | `onelogin_user`                 |
+| `onelogin_group`      | **HAS**               | `onelogin_user`                 |
+| `onelogin_user`       | **ASSIGNED**          | `onelogin_application`          |
+| `onelogin_user`       | **ASSIGNED**          | `onelogin_group`                |
+| `onelogin_user`       | **ASSIGNED**          | `onelogin_role`                 |
+| `onelogin_user`       | **HAS**               | `onelogin_personal_application` |
 
 <!--
 ********************************************************************************

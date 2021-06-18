@@ -143,22 +143,8 @@ interface PersonalDeviceResponse extends OneloginResponse {
   };
 }
 
-export interface PersonalAppsDict {
-  [id: number]: PersonalApp[];
-}
-
 export interface PersonalDevicesDict {
   [id: number]: PersonalDevice[];
-}
-
-export interface OneLoginDataModel {
-  accountName?: string;
-  apps: App[];
-  groups: Group[];
-  users: User[];
-  personalApps: PersonalAppsDict;
-  personalDevices: PersonalDevicesDict;
-  roles: Role[];
 }
 
 enum Method {

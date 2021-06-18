@@ -6,7 +6,14 @@ import {
 } from '@jupiterone/integration-sdk-core';
 
 import { IntegrationConfig } from './config';
-import { OneLoginClient, User, Group, Role, App } from './onelogin';
+import {
+  OneLoginClient,
+  User,
+  Group,
+  Role,
+  App,
+  PersonalApp,
+} from './onelogin';
 
 export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
 
@@ -21,7 +28,6 @@ export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
 export class APIClient {
   provider: OneLoginClient;
   //retrieves a token automatically and applies it to subsequent requests
-  //token expiration is configured on the auth0 site; default is 24 hours
   constructor(readonly config: IntegrationConfig, logger: IntegrationLogger) {
     this.provider = new OneLoginClient(
       config.clientId,
@@ -37,7 +43,7 @@ export class APIClient {
     } catch (err) {
       throw new IntegrationProviderAuthenticationError({
         cause: err,
-        endpoint: this.config.domain,
+        endpoint: this.config.orgUrl,
         status: err.status,
         statusText: err.statusText,
       });
@@ -86,7 +92,6 @@ export class APIClient {
   /**
    * Iterates each Onelogin Application resource.
    * These are the organization-wide apps (though not necessarily for every user).
-   * There are also "personal apps" which will be visible elsewhere.
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
@@ -94,10 +99,30 @@ export class APIClient {
     iteratee: ResourceIteratee<App>,
   ): Promise<void> {
     await this.provider.authenticate();
-    console.log('here are apps::');
     const applications = await this.provider.fetchApps();
     for (const application of applications) {
-      console.log(application);
+      await iteratee(application);
+    }
+  }
+
+  /**
+   * Iterates each Onelogin Application resource for a given user.
+   * Despite the datatype here being called 'PersonalApp',
+   * Onelogin considers a "personal app" to be one assigned by the user
+   * just for themselves. It is not represented in the organization.
+   *
+   * Such personal apps are not returned by this API. What is returned
+   * are any organization-wide apps assigned to this user.
+   *
+   * @param iteratee receives each resource to produce entities/relationships
+   */
+  public async iterateUserApps(
+    userId: string,
+    iteratee: ResourceIteratee<PersonalApp>,
+  ): Promise<void> {
+    await this.provider.authenticate();
+    const applications = await this.provider.fetchUserApps(Number(userId));
+    for (const application of applications) {
       await iteratee(application);
     }
   }
