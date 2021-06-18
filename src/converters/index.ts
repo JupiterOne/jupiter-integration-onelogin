@@ -4,6 +4,6 @@ export { createPersonalAppEntity } from './PersonalAppEntityConverter';
 export { createUserEntity } from './UserEntityConverter';
 export { createGroupEntity } from './GroupEntityConverter';
 export { createRoleEntity } from './RoleEntityConverter';
-export { createPersonalDeviceEntities } from './PersonalDeviceEntityConverter';
+export { createPersonalDeviceEntity } from './PersonalDeviceEntityConverter';
 export { createUserPersonalDeviceRelationships } from './UserPersonalDeviceRelationshipConverter';
 export { getServiceEntities } from './ServiceEntityConverter';

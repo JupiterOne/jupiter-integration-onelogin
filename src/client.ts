@@ -13,6 +13,7 @@ import {
   Role,
   App,
   PersonalApp,
+  PersonalDevice,
 } from './onelogin';
 
 export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
@@ -111,8 +112,10 @@ export class APIClient {
    * Onelogin considers a "personal app" to be one assigned by the user
    * just for themselves. It is not represented in the organization.
    *
+   * As far as I can tell...
    * Such personal apps are not returned by this API. What is returned
    * are any organization-wide apps assigned to this user.
+   * However, if truly personal apps are returned, the iteratee can handle it
    *
    * @param iteratee receives each resource to produce entities/relationships
    */
@@ -124,6 +127,22 @@ export class APIClient {
     const applications = await this.provider.fetchUserApps(Number(userId));
     for (const application of applications) {
       await iteratee(application);
+    }
+  }
+
+  /**
+   * Iterates each Onelogin MFA Device resource for a given user.
+   *
+   * @param iteratee receives each resource to produce entities/relationships
+   */
+  public async iterateUserDevices(
+    userId: string,
+    iteratee: ResourceIteratee<PersonalDevice>,
+  ): Promise<void> {
+    await this.provider.authenticate();
+    const devices = await this.provider.fetchUserDevices(Number(userId));
+    for (const device of devices) {
+      await iteratee(device);
     }
   }
 }

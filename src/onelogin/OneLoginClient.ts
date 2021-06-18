@@ -143,10 +143,6 @@ interface PersonalDeviceResponse extends OneloginResponse {
   };
 }
 
-export interface PersonalDevicesDict {
-  [id: number]: PersonalDevice[];
-}
-
 enum Method {
   GET = 'get',
   POST = 'post',
