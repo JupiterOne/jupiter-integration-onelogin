@@ -12,8 +12,9 @@ export function createUserEntity(user: User): UserEntity {
     _key: generateKey(USER_ENTITY_TYPE, user.id),
     _type: USER_ENTITY_TYPE,
     _class: USER_ENTITY_CLASS,
-    id: user.id,
+    id: String(user.id),
     displayName: `${user.firstname} ${user.lastname}`,
+    name: `${user.firstname} ${user.lastname}`,
     activatedAt: parseTimePropertyValue(user.activated_at),
     createdAt: parseTimePropertyValue(user.created_at)!,
     email: user.email,
@@ -31,7 +32,7 @@ export function createUserEntity(user: User): UserEntity {
     preferredLocaleCode: user.preferred_locale_code,
     passwordChangedAt: parseTimePropertyValue(user.password_changed_at),
     phone: user.phone,
-    status: user.status,
+    status: String(user.status),
     updatedAt: parseTimePropertyValue(user.updated_at)!,
     distinguishedName: user.distinguished_name,
     externalId: user.external_id,
@@ -47,7 +48,7 @@ export function createUserEntity(user: User): UserEntity {
     state: user.state,
     trustedIdpId: user.trusted_idp_id,
     ...convertProperties(user.custom_attributes, {
-      prefix: 'custom_attributes',
+      prefix: 'customAttributes', //this used to be custom_attributes
     }),
   };
 }

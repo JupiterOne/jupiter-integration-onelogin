@@ -5,5 +5,4 @@ export { createUserEntity } from './UserEntityConverter';
 export { createGroupEntity } from './GroupEntityConverter';
 export { createRoleEntity } from './RoleEntityConverter';
 export { createPersonalDeviceEntity } from './PersonalDeviceEntityConverter';
-export { createUserPersonalDeviceRelationships } from './UserPersonalDeviceRelationshipConverter';
 export { getServiceEntities } from './ServiceEntityConverter';

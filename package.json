@@ -31,26 +31,15 @@
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-typescript": "^7.1.0",
     "@jupiterone/integration-sdk-core": "^6.6.0",
     "@jupiterone/integration-sdk-dev-tools": "^6.6.0",
     "@jupiterone/integration-sdk-testing": "^6.6.0",
     "@types/bunyan": "^1.8.5",
     "@types/fs-extra": "^5.0.5",
     "@types/gremlin": "^3.4.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^10.12.20",
     "@types/node-fetch": "^2.1.6",
     "bunyan": "^1.8.12",
     "dotenv": "^9.0.2",
-    "fs-extra": "^7.0.1",
-    "jest": "^24.0.0",
-    "jest-haste-map": "^24.0.0",
-    "jest-resolve": "^24.1.0"
+    "fs-extra": "^7.0.1"
   }
 }
