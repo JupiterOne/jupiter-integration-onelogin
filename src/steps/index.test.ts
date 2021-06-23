@@ -116,8 +116,6 @@ test('should collect data', async () => {
     e._class.includes('User'),
   );
   expect(users.length).toBeGreaterThan(0);
-  //commented out for now, pending updating the testing method to accept properties with underscores
-  /*
   expect(users).toMatchGraphObjectSchema({
     _class: ['User'],
     schema: {
@@ -134,14 +132,12 @@ test('should collect data', async () => {
       },
       required: ['name', 'displayName', 'email'],
     },
-  }); */
+  });
 
   const applications = context.jobState.collectedEntities.filter((e) =>
     e._class.includes('Application'),
   );
   expect(applications.length).toBeGreaterThan(0);
-  //commented out for now, pending updating the testing method to accept properties with underscores
-  /*
   expect(applications).toMatchGraphObjectSchema({
     _class: ['Application'],
     schema: {
@@ -149,7 +145,6 @@ test('should collect data', async () => {
       properties: {
         _type: { const: 'onelogin_application' },
         name: { type: 'string' },
-        id: { type: 'string' },
         _rawData: {
           type: 'array',
           items: { type: 'object' },
@@ -157,5 +152,5 @@ test('should collect data', async () => {
       },
       required: ['name', 'id'],
     },
-  });*/
+  });
 });

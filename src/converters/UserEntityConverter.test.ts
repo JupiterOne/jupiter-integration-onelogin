@@ -48,7 +48,7 @@ test('should convert custom attributes', () => {
   };
 
   expect(createUserEntity(user)).toMatchObject({
-    'custom_attributes.customUserField': 'custom-user-value',
-    'custom_attributes.anotherField': 'another-value',
+    'customAttributes.customUserField': 'custom-user-value',
+    'customAttributes.anotherField': 'another-value',
   });
 });
