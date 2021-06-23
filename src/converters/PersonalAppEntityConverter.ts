@@ -20,7 +20,7 @@ export function createPersonalAppEntity(app: PersonalApp): PersonalAppEntity {
     name: app.name,
     provisioned: app.provisioned,
     extension: app.extension,
-    loginId: app.login_id,
+    login_id: app.login_id,
     personal: app.personal,
   };
 }

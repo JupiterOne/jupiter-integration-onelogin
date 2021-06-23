@@ -12,7 +12,7 @@ export function createAppEntity(app: App): AppEntity {
     _icon: app.icon,
     id: String(app.id),
     displayName: app.name,
-    connectorId: app.connector_id,
+    connector_id: app.connector_id,
     name: app.name,
     extension: app.extension,
     visible: app.visible,

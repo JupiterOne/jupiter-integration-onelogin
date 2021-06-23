@@ -50,6 +50,7 @@ Instructions on creating an API token within your OneLogin account can be found
   needs. You may leave this as `DISABLED` and manually execute the integration.
 - Enter the **API Client ID** used to authenticate with OneLogin.
 - Enter the **API Client Secret** associated with the client ID.
+- Enter your **Organization URL** in the format YOURDOMAIN.onelogin.com.
 
 4. Click **Create Configuration** once all values are provided.
 

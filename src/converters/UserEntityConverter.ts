@@ -48,7 +48,7 @@ export function createUserEntity(user: User): UserEntity {
     state: user.state,
     trustedIdpId: user.trusted_idp_id,
     ...convertProperties(user.custom_attributes, {
-      prefix: 'customAttributes', //this used to be custom_attributes
+      prefix: 'custom_attributes',
     }),
   };
 }

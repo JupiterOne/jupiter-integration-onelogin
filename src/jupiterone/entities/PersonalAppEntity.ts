@@ -8,6 +8,6 @@ export interface PersonalAppEntity extends Entity {
   name: string;
   provisioned: string;
   extension: boolean;
-  loginId: number;
+  login_id: number;
   personal: boolean;
 }

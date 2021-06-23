@@ -5,7 +5,7 @@ export const APP_ENTITY_CLASS = ['Application'];
 
 export interface AppEntity extends Entity {
   id: string;
-  connectorId: number;
+  connector_id: number;
   name: string;
   extension: boolean;
   visible: boolean;
