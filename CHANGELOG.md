@@ -8,6 +8,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+## 2.0.0 - 2021-06-23
+
+### Changed
+
+- Rewrite of the integration in the new SDK. This forced some small changes to
+  entity properties because underscores are no longer supported. The affected
+  properties were `login_id` in personal app entities, `connector_id` in
+  application entities, and the prefix `custom_attribute` for custom user
+  properties. These were changed to `loginId`, `connectorId` and
+  `customAttribute` respectively.
+
 ## 1.1.0 - 2021-05-12
 
 ### Added
